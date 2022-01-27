@@ -5,6 +5,9 @@ Andamento:
 As informações de Cozinha já podem ser consumidas através de seus end-points;
 Métodos existentes: Get, Post, Put e Delete;
 
+As informações de Restaurante já podem ser consumidas através de seus end-points;
+Métodos existentes: Get, Post e Put;
+
 ## Tecnologias utilizadas
 
 ## Java 16;
