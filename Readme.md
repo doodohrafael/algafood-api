@@ -43,3 +43,5 @@
 ##### POST /restaurantes: localhost:8080/restaurantes - Adicionar um novo restaurante
 
 ##### PUT /restaurantes/{id}: localhost:8080/restaurantes/2 - Atualizar um restaurante existente
+
+##### DELETE /restaurantes/{id}: localhost:8080/restaurantes/1 - Excluir um restaurante existente
