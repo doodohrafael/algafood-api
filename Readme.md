@@ -35,3 +35,11 @@
 ### As informações de Restaurante já podem ser consumidas através de seus end-points localmente;
 ### Métodos existentes: Get, Post e Put;
 
+
+##### GET /restaurantes/{id}: localhost:8080/restaurantes/1 - Buscar um restaurante específico por id
+
+##### GET /restaurantes: localhost:8080/restaurantes - Buscar uma lista de todos os restaurantes existentes no banco de dados
+
+##### POST /restaurantes: localhost:8080/restaurantes - Adicionar um novo restaurante
+
+##### PUT /restaurantes/{id}: localhost:8080/restaurantes/2 - Atualizar um restaurante existente
