@@ -41,8 +41,13 @@ public class CadastroRestauranteService {
 		try {
 			Restaurante restauranteAtual = restauranteRepository.porId(restauranteId);
 			cozinhaRepository.buscar(restaurante.getCozinha().getId());
-			BeanUtils.copyProperties(restaurante, restauranteAtual, "id");
-			cozinhaRepository.salvar(restauranteAtual.getCozinha());
+			if(restaurante.getCozinha().getId() == restauranteAtual.getCozinha().getId()) {
+				BeanUtils.copyProperties(restaurante, restauranteAtual, "id");
+				cozinhaRepository.salvar(restauranteAtual.getCozinha());
+			} else {
+				BeanUtils.copyProperties(restaurante, restauranteAtual, "id", "cozinha");
+			}
+			
 			return restauranteRepository.adicionar(restauranteAtual);
 		} catch (EmptyResultDataAccessException e) {
 			throw new EntidadeNaoRequisitadaCorretamente(
