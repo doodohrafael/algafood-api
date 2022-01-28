@@ -1,13 +1,5 @@
 # API de gerencimento de Restaurante
 
-Andamento:
-
-As informações de Cozinha já podem ser consumidas através de seus end-points;
-Métodos existentes: Get, Post, Put e Delete;
-
-As informações de Restaurante já podem ser consumidas através de seus end-points;
-Métodos existentes: Get, Post e Put;
-
 ## Tecnologias utilizadas
 
 ## Java 16;
@@ -16,7 +8,31 @@ Métodos existentes: Get, Post e Put;
 ## Spring Data JPA
 ## Maven;
 ## Plugin e biblioteca Lombok;
-## JPA;
 ## Hibernate;
+## Postman para fazer testes de requisições e respostas.
 
-## e utilizando o Postman para fazer testes de requisições e respostas.
+## Descrição: É o projeto do Curso "Especialita Spring Rest" da AlgaWorks que estou fazendo que ensina muito sobre o ecossistema Spring e APIs REST. 
+
+# Andamento: O projeto ainda está em desenvolvimento, ainda estou no final do 4º módulo do curso, porém já consegui absorver muito conhecimento até onde estou, pois meu conhecimento em Java e outras tecnologias ajudam bastante. Estou indo pouco mais longe nos desafios, tratando todos os possíveis erros em requisições e retornando o Status de cada resposta o mais coerente possível.
+
+# Documentação
+
+### As informações de Cozinha já podem ser consumidas através de seus end-points localmente;
+### Métodos existentes: Get, Post, Put e Delete;
+
+
+## GET /cozinhas/{id}: localhost:8080/cozinhas/1 - Buscar uma cozinha específica por id
+
+## GET /cozinhas: localhost:8080/cozinhas - Buscar uma lista de todas as cozinhas existentes no banco de dados
+
+## POST /cozinhas: localhost:8080/cozinhas - Adicionar uma nova cozinha
+
+## PUT /cozinhas/{id}: localhost:8080/cozinhas/2 - Atualizar uma cozinha existente
+
+## DELETE /cozinhas/{id}: localhost:8080/cozinhas/1 - Excluir uma cozinha existente
+
+
+
+### As informações de Restaurante já podem ser consumidas através de seus end-points localmente;
+### Métodos existentes: Get, Post e Put;
+
