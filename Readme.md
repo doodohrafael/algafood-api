@@ -21,15 +21,15 @@
 ### Métodos existentes: Get, Post, Put e Delete;
 
 
-## GET /cozinhas/{id}: localhost:8080/cozinhas/1 - Buscar uma cozinha específica por id
+##### GET /cozinhas/{id}: localhost:8080/cozinhas/1 - Buscar uma cozinha específica por id
 
-## GET /cozinhas: localhost:8080/cozinhas - Buscar uma lista de todas as cozinhas existentes no banco de dados
+##### GET /cozinhas: localhost:8080/cozinhas - Buscar uma lista de todas as cozinhas existentes no banco de dados
 
-## POST /cozinhas: localhost:8080/cozinhas - Adicionar uma nova cozinha
+##### POST /cozinhas: localhost:8080/cozinhas - Adicionar uma nova cozinha
 
-## PUT /cozinhas/{id}: localhost:8080/cozinhas/2 - Atualizar uma cozinha existente
+##### PUT /cozinhas/{id}: localhost:8080/cozinhas/2 - Atualizar uma cozinha existente
 
-## DELETE /cozinhas/{id}: localhost:8080/cozinhas/1 - Excluir uma cozinha existente
+##### DELETE /cozinhas/{id}: localhost:8080/cozinhas/1 - Excluir uma cozinha existente
 
 
 
