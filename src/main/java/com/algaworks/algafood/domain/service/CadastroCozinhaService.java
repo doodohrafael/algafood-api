@@ -33,5 +33,9 @@ public class CadastroCozinhaService {
 		}
 
 	}
+	
+	public Cozinha buscar(Long cozinhaId) {
+		return cozinhaRepository.buscar(cozinhaId);
+	}
 
 }

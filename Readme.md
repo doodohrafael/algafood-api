@@ -8,7 +8,6 @@
 ## Spring Data JPA
 ## Maven;
 ## Plugin e biblioteca Lombok;
-## Hibernate;
 ## Postman para fazer testes de requisições e respostas.
 
 ## Descrição: É o projeto do Curso "Especialita Spring Rest" da AlgaWorks que estou fazendo que ensina muito sobre o ecossistema Spring e APIs REST. 
