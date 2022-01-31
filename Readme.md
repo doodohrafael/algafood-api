@@ -5,7 +5,8 @@
 ## Java 16;
 ## Spring MVC;
 ## Spring Boot;
-## Spring Data JPA
+## Spring Data JPA;
+## Hibernate;
 ## Maven;
 ## Plugin e biblioteca Lombok;
 ## Postman para fazer testes de requisições e respostas.
