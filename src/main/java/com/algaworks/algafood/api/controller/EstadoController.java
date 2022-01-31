@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.algaworks.algafood.domain.exception.EntidadeEmUsoExcption;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Estado;
 import com.algaworks.algafood.domain.repository.EstadoRepository;
@@ -59,5 +61,17 @@ public class EstadoController {
 		}
 	}
 	
+	@DeleteMapping("/{estadoId}")
+	public ResponseEntity<?> excluir(@PathVariable Long estadoId) {
+		try {
+			cadastroEstado.excluir(estadoId);
+			return ResponseEntity.noContent().build();
+		} catch (EntidadeEmUsoExcption e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+		} catch (EntidadeNaoEncontradaException e) {
+			return ResponseEntity.notFound().build();
+		}
+	}
 	
 }
