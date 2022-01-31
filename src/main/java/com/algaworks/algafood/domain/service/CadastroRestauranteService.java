@@ -38,24 +38,50 @@ public class CadastroRestauranteService {
 	}
 	
 	public Restaurante atualizar(Long restauranteId, Restaurante restaurante) {
+		Cozinha cozinha = null;
+		Restaurante restauranteAtual = null;
 		try {
-			Restaurante restauranteAtual = restauranteRepository.porId(restauranteId);
-			cozinhaRepository.buscar(restaurante.getCozinha().getId());
-			if(restaurante.getCozinha().getId() == restauranteAtual.getCozinha().getId()) {
-				BeanUtils.copyProperties(restaurante, restauranteAtual, "id");
-				cozinhaRepository.salvar(restauranteAtual.getCozinha());
-			} else {
-				BeanUtils.copyProperties(restaurante, restauranteAtual, "id", "cozinha");
+			restauranteAtual = restauranteRepository.porId(restauranteId);
+			cozinha = cozinhaRepository.buscar(restaurante.getCozinha().getId());
+			BeanUtils.copyProperties(restaurante, restauranteAtual, "id");
+			cozinhaRepository.salvar(cozinha);
+			return restauranteRepository.adicionar(restauranteAtual);
+
+		} catch (IllegalArgumentException e) {
+			if (cozinha == null && restauranteAtual == null) {
+				throw new EntidadeNaoEncontradaException(String
+						.format("Não existe um cadastro de cozinha com código %d"
+								+ "; Não existe um cadastro de restaurante com código %d", 
+								restaurante.getCozinha().getId(), restauranteId));
 			}
 			
-			return restauranteRepository.adicionar(restauranteAtual);
+			if (cozinha == null) {
+				throw new EntidadeNaoEncontradaException(String
+						.format("Não existe um cadastro de cozinha com código %d", restaurante.getCozinha().getId()));
+			}
+			if (restauranteAtual == null) {
+				throw new EntidadeNaoEncontradaException(
+						String.format("Não existe um cadastro de restaurante com código %d", restauranteId));
+			}
+
 		} catch (EmptyResultDataAccessException e) {
-			throw new EntidadeNaoRequisitadaCorretamente(
-					String.format("Não existe um cadastro de cozinha com código %d", restaurante.getCozinha().getId()));
-		} catch (IllegalArgumentException e) {
-			throw new EntidadeNaoEncontradaException(
-					String.format("Não existe um cadastro de restaurante com código %d", restauranteId));
+			if (cozinha == null && restauranteAtual == null) {
+				throw new EntidadeNaoEncontradaException(String
+						.format("Não existe um cadastro de cozinha com código %d"
+								+ "; Não existe um cadastro de restaurante com código %d", 
+								restaurante.getCozinha().getId(), restauranteId));
+			}
+			
+			if (cozinha == null) {
+				throw new EntidadeNaoEncontradaException(String
+						.format("Não existe um cadastro de cozinha com código %d", restaurante.getCozinha().getId()));
+			}
+			if (restauranteAtual == null) {
+				throw new EntidadeNaoEncontradaException(
+						String.format("Não existe um cadastro de restaurante com código %d", restauranteId));
+			}
 		}
+		return null;
 
 	}
 	

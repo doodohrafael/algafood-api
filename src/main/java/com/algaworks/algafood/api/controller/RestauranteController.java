@@ -61,7 +61,8 @@ public class RestauranteController {
 			restaurante = cadastroRestautante.atualizar(restauranteId, restaurante);
 			return ResponseEntity.ok().body(restaurante);
 		} catch (EntidadeNaoEncontradaException e) {
-			return ResponseEntity.notFound().build();
+			return ResponseEntity.badRequest().body(e.getMessage());
+			//return ResponseEntity.notFound().build();
 		} catch (EntidadeNaoRequisitadaCorretamente e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
