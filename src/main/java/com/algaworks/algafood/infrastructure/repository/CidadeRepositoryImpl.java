@@ -23,23 +23,21 @@ public class CidadeRepositoryImpl implements CidadeRepository{
 	}
 
 	@Override
-	public Cidade porId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Cidade porId(Long cidadeId) {
+		return manager.find(Cidade.class, cidadeId);
 	}
 
 	@Transactional
 	@Override
 	public Cidade adicionar(Cidade cidade) {
-		// TODO Auto-generated method stub
-		return null;
+		return manager.merge(cidade);
 	}
 
 	@Transactional
 	@Override
 	public void remover(Long cidadeId) {
-		// TODO Auto-generated method stub
-		
+		Cidade cidade = porId(cidadeId);
+		manager.remove(cidade);
 	}
 	
 	
