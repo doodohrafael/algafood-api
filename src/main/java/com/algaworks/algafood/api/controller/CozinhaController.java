@@ -1,14 +1,18 @@
 package com.algaworks.algafood.api.controller;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -23,6 +27,7 @@ import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.service.CadastroCozinhaService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/cozinhas")
@@ -84,5 +89,30 @@ public class CozinhaController {
 		} catch (EntidadeEmUsoExcption e) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).build();
 		}
+	}
+	
+	@PatchMapping("/{cozinhaId}")
+	public ResponseEntity<Cozinha> atualizarParcial(@PathVariable Long cozinhaId, @RequestBody Map<String, Object> campos){
+		Cozinha cozinhaAtual = cadastroCozinha.buscar(cozinhaId);
+		if(cozinhaAtual == null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		merge(campos, cozinhaAtual);
+		
+		return atualizar(cozinhaId, cozinhaAtual);
+	}
+	
+	private void merge(Map<String, Object> dadosOrigem, Cozinha cozinhaDestino) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		Cozinha cozinhaOrigem = objectMapper.convertValue(dadosOrigem, Cozinha.class);
+		
+		dadosOrigem.forEach((nomePropriedade, valorPropriedade) -> {
+			Field field = ReflectionUtils.findField(Cozinha.class, nomePropriedade);
+			field.setAccessible(true);
+			Object novoValor = ReflectionUtils.getField(field, cozinhaOrigem);
+			ReflectionUtils.setField(field, cozinhaDestino, novoValor);
+		});
+		
 	}
 }

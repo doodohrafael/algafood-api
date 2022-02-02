@@ -29,6 +29,8 @@
 
 ##### PUT /cozinhas/{id}: localhost:8080/cozinhas/2 - Atualizar uma cozinha existente
 
+##### PATCH /cozinhas/{id}: localhost:8080/cozinhas/1 - Atualizar parcialmente uma cozinha existente
+
 ##### DELETE /cozinhas/{id}: localhost:8080/cozinhas/1 - Excluir uma cozinha existente
 
 -------------------------------------------------------------------------------------------
@@ -44,6 +46,8 @@
 ##### POST /restaurantes: localhost:8080/restaurantes - Adicionar um novo restaurante
 
 ##### PUT /restaurantes/{id}: localhost:8080/restaurantes/2 - Atualizar um restaurante existente
+
+##### PATCH /restaurantes/{id}: localhost:8080/restaurantes/1 - Atualizar parcialmente um restaurante existente
 
 ##### DELETE /restaurantes/{id}: localhost:8080/restaurantes/1 - Excluir um restaurante existente
 
