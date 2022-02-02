@@ -31,10 +31,10 @@
 
 ##### DELETE /cozinhas/{id}: localhost:8080/cozinhas/1 - Excluir uma cozinha existente
 
-
+-------------------------------------------------------------------------------------------
 
 ### As informações de Restaurante já podem ser consumidas através de seus end-points localmente;
-### Métodos existentes: Get, Post e Put;
+### Métodos existentes: Get, Post, Put, Patch e Delete;
 
 
 ##### GET /restaurantes/{id}: localhost:8080/restaurantes/1 - Buscar um restaurante específico por id
@@ -46,3 +46,35 @@
 ##### PUT /restaurantes/{id}: localhost:8080/restaurantes/2 - Atualizar um restaurante existente
 
 ##### DELETE /restaurantes/{id}: localhost:8080/restaurantes/1 - Excluir um restaurante existente
+
+-------------------------------------------------------------------------------------------
+
+### As informações de Estado já podem ser consumidas através de seus end-points localmente;
+### Métodos existentes: Get, Post, Put e Delete;
+
+
+##### GET /estados/{id}: localhost:8080/estados/1 - Buscar um estado específico por id
+
+##### GET /estados: localhost:8080/estados - Buscar uma lista de todos os estados existentes no banco de dados
+
+##### POST /estados: localhost:8080/estados - Adicionar um novo estado
+
+##### PUT /estados/{id}: localhost:8080/estados/2 - Atualizar um estado existente
+
+##### DELETE /estados/{id}: localhost:8080/estados/1 - Excluir um estado existente
+
+-------------------------------------------------------------------------------------------
+
+### As informações de Cidade já podem ser consumidas através de seus end-points localmente;
+### Métodos existentes: Get, Post, Put e Delete;
+
+
+##### GET /cidades/{id}: localhost:8080/cidades/1 - Buscar uma cidade específica por id
+
+##### GET /cidades: localhost:8080/cidades - Buscar uma lista de todas os cidades existentes no banco de dados
+
+##### POST /cidades: localhost:8080/cidades - Adicionar uma nova cidade
+
+##### PUT /cidades/{id}: localhost:8080/cidades/2 - Atualizar uma cidade existente
+
+##### DELETE /cidades/{id}: localhost:8080/cidades/1 - Excluir uma cidade existente
