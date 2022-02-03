@@ -54,7 +54,7 @@
 -------------------------------------------------------------------------------------------
 
 ### As informações de Estado já podem ser consumidas através de seus end-points localmente;
-### Métodos existentes: Get, Post, Put e Delete;
+### Métodos existentes: Get, Post, Put, Patch e Delete;
 
 
 ##### GET /estados/{id}: localhost:8080/estados/1 - Buscar um estado específico por id
@@ -65,12 +65,14 @@
 
 ##### PUT /estados/{id}: localhost:8080/estados/2 - Atualizar um estado existente
 
+##### PATCH /estados/{id}: localhost:8080/estados/1 - Atualizar parcialmente um estado existente
+
 ##### DELETE /estados/{id}: localhost:8080/estados/1 - Excluir um estado existente
 
 -------------------------------------------------------------------------------------------
 
 ### As informações de Cidade já podem ser consumidas através de seus end-points localmente;
-### Métodos existentes: Get, Post, Put e Delete;
+### Métodos existentes: Get, Post, Put, Patch e Delete;
 
 
 ##### GET /cidades/{id}: localhost:8080/cidades/1 - Buscar uma cidade específica por id
@@ -80,5 +82,7 @@
 ##### POST /cidades: localhost:8080/cidades - Adicionar uma nova cidade
 
 ##### PUT /cidades/{id}: localhost:8080/cidades/2 - Atualizar uma cidade existente
+
+##### PATCH /cidades/{id}: localhost:8080/cidades/1 - Atualizar parcialmente uma cidade existente
 
 ##### DELETE /cidades/{id}: localhost:8080/cidades/1 - Excluir uma cidade existente
