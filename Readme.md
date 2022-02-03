@@ -18,7 +18,7 @@
 # Documentação
 
 ### As informações de Cozinha já podem ser consumidas através de seus end-points localmente;
-### Métodos existentes: Get, Post, Put e Delete;
+### Métodos existentes: Get, Post, Put, Patch e Delete;
 
 
 ##### GET /cozinhas/{id}: localhost:8080/cozinhas/1 - Buscar uma cozinha específica por id
