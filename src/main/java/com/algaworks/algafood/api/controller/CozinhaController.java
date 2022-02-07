@@ -3,9 +3,11 @@ package com.algaworks.algafood.api.controller;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -39,23 +41,16 @@ public class CozinhaController {
 	@Autowired
 	private CadastroCozinhaService cadastroCozinha;
 
-	/*
-	@GetMapping(produces = MediaType.APPLICATION_XML_VALUE)
-	public CozinhasXmlWrapper listarXml() {
-		return new CozinhasXmlWrapper(cozinhaRepository.listar());
-	}
-	*/
-	
 	@GetMapping
 	public List<Cozinha> listar() {
-		return cozinhaRepository.listar();
+		return cozinhaRepository.findAll();
 	}
 
 	@GetMapping("/{cozinhaId}")
 	public ResponseEntity<Cozinha> buscar(@PathVariable Long cozinhaId) {
-		Cozinha cozinha = cadastroCozinha.buscar(cozinhaId);
-		if (cozinha != null) {
-			return ResponseEntity.ok(cozinha);
+		Optional<Cozinha> cozinha = cozinhaRepository.findById(cozinhaId);
+		if (cozinha.isPresent()) {
+			return ResponseEntity.ok(cozinha.get());
 		}
 		return ResponseEntity.notFound().build();
 	}
@@ -67,15 +62,17 @@ public class CozinhaController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(cozinha);
 	}
 
+	
 	@PutMapping("/{cozinhaId}")
 	public ResponseEntity<Cozinha> atualizar(@PathVariable Long cozinhaId, @RequestBody Cozinha cozinha) {
-		try {
-			cozinha = cadastroCozinha.atualizar(cozinhaId, cozinha);
-			return ResponseEntity.status(HttpStatus.OK).body(cozinha);
-		} catch (EntidadeNaoEncontradaException e) {
+			Optional<Cozinha> cozinhaAtual = cozinhaRepository.findById(cozinhaId);
+			if(cozinhaAtual.isPresent()) {
+				BeanUtils.copyProperties(cozinha, cozinhaAtual.get(), "id");
+				cozinhaRepository.save(cozinhaAtual.get());
+				return ResponseEntity.status(HttpStatus.OK).body(cozinhaAtual.get());
+			}
+			
 			return ResponseEntity.notFound().build();
-		}
-		
 	}
 
 
@@ -93,14 +90,14 @@ public class CozinhaController {
 	
 	@PatchMapping("/{cozinhaId}")
 	public ResponseEntity<Cozinha> atualizarParcial(@PathVariable Long cozinhaId, @RequestBody Map<String, Object> campos){
-		Cozinha cozinhaAtual = cadastroCozinha.buscar(cozinhaId);
+		Optional<Cozinha> cozinhaAtual = cozinhaRepository.findById(cozinhaId);
 		if(cozinhaAtual == null) {
 			return ResponseEntity.notFound().build();
 		}
 		
-		merge(campos, cozinhaAtual);
+		merge(campos, cozinhaAtual.get());
 		
-		return atualizar(cozinhaId, cozinhaAtual);
+		return atualizar(cozinhaId, cozinhaAtual.get());
 	}
 	
 	private void merge(Map<String, Object> dadosOrigem, Cozinha cozinhaDestino) {
