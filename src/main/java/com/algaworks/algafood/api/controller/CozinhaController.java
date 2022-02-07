@@ -91,7 +91,7 @@ public class CozinhaController {
 	@PatchMapping("/{cozinhaId}")
 	public ResponseEntity<Cozinha> atualizarParcial(@PathVariable Long cozinhaId, @RequestBody Map<String, Object> campos){
 		Optional<Cozinha> cozinhaAtual = cozinhaRepository.findById(cozinhaId);
-		if(cozinhaAtual == null) {
+		if(cozinhaAtual.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
 		
