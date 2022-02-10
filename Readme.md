@@ -34,12 +34,10 @@
 ##### DELETE /cozinhas/{id}: localhost:8080/cozinhas/1 - Excluir uma cozinha existente
 
 ##### GET /cozinhas/unica-por-nome: - Buscar uma cozinha específica por nome
-##### keys: nome;  
-##### values: String;
+##### KEYS: nome; VALUES: String;
 
 ##### GET /cozinhas/por-nome: - Buscar uma lista de cozinhas existentes no banco de dados por nome
-##### keys: nome;  
-##### values: String;
+##### KEYS: nome; VALUES: String;
 
 
 
@@ -62,15 +60,13 @@
 ##### DELETE /restaurantes/{id}: localhost:8080/restaurantes/1 - Excluir um restaurante existente
 
 ##### GET /restaurantes/por-taxa-frete: - Buscar uma lista de restaurantes existentes no banco de dados filtrando entra taxa frete inicial e taxa frete final
-##### keys: taxaInicial; taxaFinal; 
-##### values: Long;
+##### KEYS: taxaInicial; taxaFinal; VALUES: Long;
 
 ##### GET /restaurantes/por-nome: - Buscar uma lista de restaurantes fintrando por nome
-##### keys: nome;  
-##### values: String;
+##### KEYS: nome;  VALUES: String;
 
 ##### GET /restaurantes/por-nome-e-cozinha: - Buscar uma lista de restaurantes fintrando por nome e id de cozinha
-##### keys: nome; cozinhaId; values: String; Long;
+##### KEYS: nome; cozinhaId; VALUES: String; Long;
 
 -------------------------------------------------------------------------------------------
 
