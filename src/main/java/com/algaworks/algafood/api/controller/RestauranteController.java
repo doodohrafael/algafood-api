@@ -43,9 +43,6 @@ public class RestauranteController {
 	@Autowired
 	private CozinhaRepository cozinhaRepository;
 	
-	@Autowired
-	private CadastroCozinhaService cadastroCozinha;
-
 	@GetMapping("/{restauranteId}")
 	public ResponseEntity<Restaurante> buscar(@PathVariable Long restauranteId) {
 		Optional<Restaurante> restaurante = restauranteRepository.findById(restauranteId);
@@ -121,4 +118,15 @@ public class RestauranteController {
 			ReflectionUtils.setField(field, restauranteDestino, novoValor);
 		});
 	}
+	
+	@GetMapping("/por-nome")
+	public List<Restaurante> restaurantePorNome(String nome) {
+		return restauranteRepository.findByNomeContaining(nome);
+	}
+	
+	@GetMapping("/por-nome-e-cozinha")
+	public List<Restaurante> restaurantePorNomeECozinha(String nome, Long cozinhaId){
+		return restauranteRepository.consultarPorNomeECozinha(nome, cozinhaId);
+	}
+	
 }

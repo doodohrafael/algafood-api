@@ -33,6 +33,16 @@
 
 ##### DELETE /cozinhas/{id}: localhost:8080/cozinhas/1 - Excluir uma cozinha existente
 
+##### GET /cozinhas/unica-por-nome: - Buscar uma cozinha específica por nome
+##### keys: nome;  
+##### values: String;
+
+##### GET /cozinhas/por-nome: - Buscar uma lista de cozinhas existentes no banco de dados por nome
+##### keys: nome;  
+##### values: String;
+
+
+
 -------------------------------------------------------------------------------------------
 
 ### As informações de Restaurante já podem ser consumidas através de seus end-points localmente;
@@ -50,6 +60,18 @@
 ##### PATCH /restaurantes/{id}: localhost:8080/restaurantes/1 - Atualizar parcialmente um restaurante existente
 
 ##### DELETE /restaurantes/{id}: localhost:8080/restaurantes/1 - Excluir um restaurante existente
+
+##### GET /restaurantes/por-taxa-frete: - Buscar uma lista de restaurantes existentes no banco de dados filtrando entra taxa frete inicial e taxa frete final
+##### keys: taxaInicial; taxaFinal; 
+##### values: Long;
+
+##### GET /restaurantes/por-nome: - Buscar uma lista de restaurantes fintrando por nome
+##### keys: nome;  
+##### values: String;
+
+##### GET /restaurantes/por-nome-e-cozinha: - Buscar uma lista de restaurantes fintrando por nome e id de cozinha
+##### keys: nome; cozinhaId; 
+##### values: String; Long;
 
 -------------------------------------------------------------------------------------------
 

@@ -112,4 +112,16 @@ public class CozinhaController {
 		});
 		
 	}
+	
+	@GetMapping("/unica-por-nome")
+	public Optional<Cozinha> cozinhaPorNome(String nome) {
+		return cozinhaRepository.findByNome(nome);
+	}
+	
+	@GetMapping("/por-nome")
+	public List<Cozinha> cozinhasPorNome(String nome) {
+		return cozinhaRepository.findTodasByNome(nome);
+	}
+	
+	
 }
