@@ -70,8 +70,7 @@
 ##### values: String;
 
 ##### GET /restaurantes/por-nome-e-cozinha: - Buscar uma lista de restaurantes fintrando por nome e id de cozinha
-##### keys: nome; cozinhaId; 
-##### values: String; Long;
+##### keys: nome; cozinhaId; values: String; Long;
 
 -------------------------------------------------------------------------------------------
 
