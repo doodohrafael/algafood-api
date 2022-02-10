@@ -64,7 +64,7 @@
 
 ##### GET /restaurantes/por-nome: - Buscar uma lista de restaurantes fintrando por nome
 ##### KEYS: nome;  
-##### VALUES: String;
+VALUES: String;
 
 ##### GET /restaurantes/por-nome-e-cozinha: - Buscar uma lista de restaurantes fintrando por nome e id de cozinha
 ##### KEYS: nome; cozinhaId; VALUES: String; Long;
