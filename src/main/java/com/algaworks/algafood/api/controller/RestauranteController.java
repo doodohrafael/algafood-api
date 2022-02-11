@@ -132,7 +132,33 @@ public class RestauranteController {
 	
 	@GetMapping("/por-taxa-frete")
 	public List<Restaurante> restaurantePorTaxaFrete(BigDecimal taxaInicial, BigDecimal taxaFinal){
-		return restauranteRepository.readByTaxaFreteBetween(taxaInicial, taxaFinal);
+		return restauranteRepository.queryByTaxaFreteBetween(taxaInicial, taxaFinal);
+	}
+	
+	@GetMapping("/existe")
+	public boolean restauranteExiste(String nome) {
+		return restauranteRepository.existsByNome(nome);
+	}
+	
+	@GetMapping("/dois-primeiros")
+	public List<Restaurante> doisPrimeirosRestaurantes(String nome) {
+		return restauranteRepository.findTop2ByNomeContaining(nome);
+	}
+	
+	@GetMapping("/primeiro")
+	public Optional<Restaurante> primeiroRestaurante(String nome) {
+		return restauranteRepository.findFirstByNomeContaining(nome);
+	}
+	
+	@GetMapping("/cozinhas")
+	public int cozinhasRestaurante(Long cozinhaId) {
+		return restauranteRepository.countByCozinhaId(cozinhaId);
+	}
+	
+	@GetMapping("/por-taxa-frete-ordenado-por-nome")
+	public List<Restaurante> restaurantesPorTaxaFreteOrdenadosPorNome(BigDecimal taxaInicial
+			, BigDecimal taxaFinal) {
+		return restauranteRepository.findByTaxaFreteBetweenOrderByNomeAsc(taxaInicial, taxaFinal);
 	}
 	
 }

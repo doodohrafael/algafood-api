@@ -2,6 +2,8 @@ package com.algaworks.algafood.domain.repository;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,5 +18,15 @@ public interface RestauranteRepository extends JpaRepository<Restaurante, Long>{
 	List<Restaurante> consultarPorNomeECozinha(String nome, 
 			@Param("id") Long cozinhaId);
 	
-	List<Restaurante> readByTaxaFreteBetween(BigDecimal taxaInicial, BigDecimal taxaFinal);
+	List<Restaurante> queryByTaxaFreteBetween(BigDecimal taxaInicial, BigDecimal taxaFinal);
+	
+	boolean existsByNome(String nome);
+	
+	List<Restaurante> findTop2ByNomeContaining(String nome);
+	
+	Optional<Restaurante> findFirstByNomeContaining(String nome);
+	
+	int countByCozinhaId(Long cozinhaId);
+	
+	List<Restaurante> findByTaxaFreteBetweenOrderByNomeAsc(BigDecimal taxaInicial, BigDecimal taxaFinal);
 }

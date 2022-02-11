@@ -68,6 +68,9 @@
 ##### GET /restaurantes/por-nome-e-cozinha: - Buscar uma lista de restaurantes fintrando por nome e id de cozinha
 ##### KEYS: nome; cozinhaId; VALUES: String; Long;
 
+##### GET /restaurantes/por-taxa-frete-ordenado-por-nome: - Buscar uma lista de restaurantes filtrando por taxa frete inicial e taxa frete final
+##### KEYS: taxaInicial; taxaFinal; VALUES: Long;
+
 -------------------------------------------------------------------------------------------
 
 ### As informações de Estado já podem ser consumidas através de seus end-points localmente;
