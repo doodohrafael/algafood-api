@@ -59,17 +59,24 @@
 
 ##### DELETE /restaurantes/{id}: localhost:8080/restaurantes/1 - Excluir um restaurante existente
 
-##### GET /restaurantes/por-taxa-frete: - Buscar uma lista de restaurantes existentes no banco de dados filtrando entra taxa frete inicial e taxa frete final
+##### GET /restaurantes/por-taxa-frete: - Buscar uma lista de restaurantes existentes no banco de dados filtrando entre taxa frete inicial e taxa frete final
 ##### KEYS: taxaInicial; taxaFinal; VALUES: Long;
 
-##### GET /restaurantes/por-nome: - Buscar uma lista de restaurantes fintrando por nome
+##### GET /restaurantes/por-nome: - Buscar uma lista de restaurantes filtrando por nome
 ##### KEYS: nome;  VALUES: String;
 
-##### GET /restaurantes/por-nome-e-cozinha: - Buscar uma lista de restaurantes fintrando por nome e id de cozinha
+##### GET /restaurantes/por-nome-e-cozinha: - Buscar uma lista de restaurantes filtrando por nome e id de cozinha
 ##### KEYS: nome; cozinhaId; VALUES: String; Long;
 
 ##### GET /restaurantes/por-taxa-frete-ordenado-por-nome: - Buscar uma lista de restaurantes filtrando por taxa frete inicial e taxa frete final
 ##### KEYS: taxaInicial; taxaFinal; VALUES: Long;
+
+##### GET /restaurantes/por-nome-e-cozinha-orm: - Buscar uma lista de restaurantes filtrando por nome e id de cozinha
+##### KEYS: nome; cozinhaId; VALUES: String; Long;
+
+##### GET /restaurantes/por-nome-e-frete: - Buscar uma lista de restaurantes filtrando por nome e por taxa frete inicial e taxa frete final
+##### KEYS: nome; taxaInicial; taxaFinal; VALUES: String; Long;
+
 
 -------------------------------------------------------------------------------------------
 

@@ -161,4 +161,16 @@ public class RestauranteController {
 		return restauranteRepository.findByTaxaFreteBetweenOrderByNomeAsc(taxaInicial, taxaFinal);
 	}
 	
+	@GetMapping("/por-nome-e-cozinha-orm")
+	public List<Restaurante> restaurantePorNomeECozinhaOrm(String nome, Long cozinhaId) {
+		return restauranteRepository.consultarPorNomeECozinhaOrm(nome, cozinhaId);
+	}
+	
+	@GetMapping("/por-nome-e-frete")
+	public List<Restaurante> restaurantesPorNomeFrete(String nome, BigDecimal taxaInicial
+			, BigDecimal taxaFinal) {
+		return restauranteRepository.find(nome, taxaInicial, taxaFinal);
+	}
+	
+	
 }
