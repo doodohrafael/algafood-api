@@ -172,5 +172,15 @@ public class RestauranteController {
 		return restauranteRepository.find(nome, taxaInicial, taxaFinal);
 	}
 	
+	@GetMapping("/por-nome-e-frete-dinamico")
+	public List<Restaurante> restaurantesPorNomeFreteDinamico(String nome, BigDecimal taxaInicial
+			, BigDecimal taxaFinal) {
+		return restauranteRepository.findDinamico(nome, taxaInicial, taxaFinal);
+	}
 	
+	@GetMapping("/por-nome-e-frete-criteria")
+	public List<Restaurante> restaurantesPorNomeFreteCriteria(String nome, BigDecimal taxaInicial
+			, BigDecimal taxaFinal) {
+		return restauranteRepository.findCriteria(nome, taxaInicial, taxaFinal);
+	}
 }

@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.algaworks.algafood.domain.model.Restaurante;
-import com.algaworks.algafood.infrastructure.repository.RestauranteRepositoryQueries;
 
 public interface RestauranteRepository extends JpaRepository<Restaurante, Long>, RestauranteRepositoryQueries{
 

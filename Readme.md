@@ -77,6 +77,12 @@
 ##### GET /restaurantes/por-nome-e-frete: - Buscar uma lista de restaurantes filtrando por nome e por taxa frete inicial e taxa frete final
 ##### KEYS: nome; taxaInicial; taxaFinal; VALUES: String; Long;
 
+##### GET /restaurantes/por-nome-e-frete-dinamico: - Buscar uma lista de restaurantes filtrando por nome e por taxa frete inicial e taxa frete final
+##### KEYS: nome; taxaInicial; taxaFinal; VALUES: String; Long;
+
+##### GET /restaurantes/por-nome-e-frete-criteria: - Buscar uma lista de restaurantes filtrando por nome e por taxa frete inicial e taxa frete final
+##### KEYS: nome; taxaInicial; taxaFinal; VALUES: String; Long;
+
 
 -------------------------------------------------------------------------------------------
 
