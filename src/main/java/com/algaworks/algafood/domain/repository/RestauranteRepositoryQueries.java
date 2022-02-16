@@ -12,4 +12,6 @@ public interface RestauranteRepositoryQueries {
 	List<Restaurante> findDinamico(String nome, BigDecimal taxaInicial, BigDecimal taxaFinal);
 	
 	List<Restaurante> findCriteria(String nome, BigDecimal taxaInicial, BigDecimal taxaFinal);
+	
+	List<Restaurante> findComFreteGratis(String nome);
 }
