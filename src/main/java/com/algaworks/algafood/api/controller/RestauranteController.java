@@ -131,31 +131,6 @@ public class RestauranteController {
 		return restauranteRepository.consultarPorNomeECozinha(nome, cozinhaId);
 	}
 	
-	@GetMapping("/por-taxa-frete")
-	public List<Restaurante> restaurantePorTaxaFrete(BigDecimal taxaInicial, BigDecimal taxaFinal){
-		return restauranteRepository.queryByTaxaFreteBetween(taxaInicial, taxaFinal);
-	}
-	
-	@GetMapping("/existe")
-	public boolean restauranteExiste(String nome) {
-		return restauranteRepository.existsByNome(nome);
-	}
-	
-	@GetMapping("/dois-primeiros")
-	public List<Restaurante> doisPrimeirosRestaurantes(String nome) {
-		return restauranteRepository.findTop2ByNomeContaining(nome);
-	}
-	
-	@GetMapping("/primeiro")
-	public Optional<Restaurante> primeiroRestaurante(String nome) {
-		return restauranteRepository.findFirstByNomeContaining(nome);
-	}
-	
-	@GetMapping("/cozinhas")
-	public int cozinhasRestaurante(Long cozinhaId) {
-		return restauranteRepository.countByCozinhaId(cozinhaId);
-	}
-	
 	@GetMapping("/por-taxa-frete-ordenado-por-nome")
 	public List<Restaurante> restaurantesPorTaxaFreteOrdenadosPorNome(BigDecimal taxaInicial
 			, BigDecimal taxaFinal) {
@@ -179,6 +154,21 @@ public class RestauranteController {
 		return restauranteRepository.findDinamico(nome, taxaInicial, taxaFinal);
 	}
 	
+	@GetMapping("/por-taxa-frete")
+	public List<Restaurante> restaurantePorTaxaFrete(BigDecimal taxaInicial, BigDecimal taxaFinal){
+		return restauranteRepository.queryByTaxaFreteBetween(taxaInicial, taxaFinal);
+	}
+	
+	@GetMapping("/existe")
+	public boolean restauranteExiste(String nome) {
+		return restauranteRepository.existsByNome(nome);
+	}
+	
+	@GetMapping("/dois-primeiros")
+	public List<Restaurante> doisPrimeirosRestaurantes(String nome) {
+		return restauranteRepository.findTop2ByNomeContaining(nome);
+	}
+	
 	@GetMapping("/por-nome-e-frete-criteria")
 	public List<Restaurante> restaurantesPorNomeFreteCriteria(String nome, BigDecimal taxaInicial
 			, BigDecimal taxaFinal) {
@@ -188,5 +178,20 @@ public class RestauranteController {
 	@GetMapping("/por-nome-com-frete-gratis")
 	public List<Restaurante> restaurantesComFreteGratis(String nome) {
 		return restauranteRepository.findComFreteGratis(nome);
+	}
+	
+	@GetMapping("/primeiro-por-nome")
+	public Optional<Restaurante> primeiroRestaurante(String nome) {
+		return restauranteRepository.findFirstByNomeContaining(nome);
+	}
+	
+	@GetMapping("/cozinhas")
+	public int cozinhasRestaurante(Long cozinhaId) {
+		return restauranteRepository.countByCozinhaId(cozinhaId);
+	}
+	
+	@GetMapping("/primeiro")
+	public Optional<Restaurante> primeiroRestaurante() {
+		return restauranteRepository.findFirst();
 	}
 }

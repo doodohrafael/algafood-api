@@ -47,17 +47,17 @@
 ### Métodos existentes: Get, Post, Put, Patch e Delete;
 
 
-##### GET /restaurantes/{id}: localhost:8080/restaurantes/1 - Buscar um restaurante específico por id
+##### GET /restaurantes/{id}: - Buscar um restaurante específico por id
 
-##### GET /restaurantes: localhost:8080/restaurantes - Buscar uma lista de todos os restaurantes existentes no banco de dados
+##### GET /restaurantes: - Buscar uma lista de todos os restaurantes existentes no banco de dados
 
-##### POST /restaurantes: localhost:8080/restaurantes - Adicionar um novo restaurante
+##### POST /restaurantes: - Adicionar um novo restaurante
 
-##### PUT /restaurantes/{id}: localhost:8080/restaurantes/2 - Atualizar um restaurante existente
+##### PUT /restaurantes/{id}: - Atualizar um restaurante existente
 
-##### PATCH /restaurantes/{id}: localhost:8080/restaurantes/1 - Atualizar parcialmente um restaurante existente
+##### PATCH /restaurantes/{id}: - Atualizar parcialmente um restaurante existente
 
-##### DELETE /restaurantes/{id}: localhost:8080/restaurantes/1 - Excluir um restaurante existente
+##### DELETE /restaurantes/{id}: - Excluir um restaurante existente
 
 ##### GET /restaurantes/por-taxa-frete: - Buscar uma lista de restaurantes existentes no banco de dados filtrando entre taxa frete inicial e taxa frete final
 ##### KEYS: taxaInicial; taxaFinal; VALUES: Long;
@@ -80,10 +80,28 @@
 ##### GET /restaurantes/por-nome-e-frete-dinamico: - Buscar uma lista de restaurantes filtrando por nome e por taxa frete inicial e taxa frete final
 ##### KEYS: nome; taxaInicial; taxaFinal; VALUES: String; Long;
 
+##### GET /restaurantes/por-taxa-frete: - Buscar uma lista de restaurantes filtrando por taxa frete inicial e taxa frete final
+##### KEYS: taxaInicial; taxaFinal; VALUES: Long;
+
+##### GET /restaurantes/existe: - Saber se um restaurante existe filtrando pelo nome
+##### KEYS: nome; VALUES: String;
+
+##### GET /restaurantes/dois-primeiros: - Buscar uma lista de restaurantes trazendo somente os 2 primeiros resultados filtrando por nome
+##### KEYS: nome; VALUES: String;
+
 ##### GET /restaurantes/por-nome-e-frete-criteria: - Buscar uma lista de restaurantes filtrando por nome e por taxa frete inicial e taxa frete final
 ##### KEYS: nome; taxaInicial; taxaFinal; VALUES: String; Long;
 
 ##### GET /restaurantes/por-nome-com-frete-gratis: - Buscar uma lista de restaurantes filtrando por nome e por taxa frete grátis
+##### KEYS: nome; VALUES: String;
+
+##### GET /restaurantes/primeiro-por-nome: - Buscar primeiro restaurante encontrado filtrando por nome
+##### KEYS: nome; VALUES: String;
+
+##### GET /restaurantes/cozinhas: - Buscar quantidades de restaurantes que uma cozinha tem filtrando pelo id da cozinha
+##### KEYS: cozinhaId; VALUES: Long;
+
+##### GET /restaurantes/primeiro: - Buscar primeiro restaurante encontrado
 ##### KEYS: nome; VALUES: String;
 
 
