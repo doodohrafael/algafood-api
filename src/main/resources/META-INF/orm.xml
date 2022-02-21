@@ -13,4 +13,11 @@
         	</query>
         </named-query>
         
+        <named-query name="Cozinha.consultarCozinhaPorNomeOrm">
+        	<query>
+        		from Cozinha
+        		where nome like concat('%', :nome, '%')
+        	</query>
+        </named-query>
+        
 </entity-mappings>

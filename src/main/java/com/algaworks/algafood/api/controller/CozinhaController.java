@@ -113,15 +113,43 @@ public class CozinhaController {
 		
 	}
 	
-	@GetMapping("/unica-por-nome")
-	public Optional<Cozinha> cozinhaPorNome(String nome) {
-		return cozinhaRepository.findByNome(nome);
-	}
-	
 	@GetMapping("/por-nome")
 	public List<Cozinha> cozinhasPorNome(String nome) {
-		return cozinhaRepository.findTodasByNome(nome);
+		return cozinhaRepository.findByNomeContaining(nome);
 	}
 	
+	@GetMapping("por-nome-customizada")
+	public List<Cozinha> cozinhaPorNomeCustomizada(String nome) {
+		return cozinhaRepository.consultarCozinhaPorNome(nome);
+	}
 	
+	@GetMapping("por-nome-orm")
+	public List<Cozinha> cozinhaPorNomeOrm(String nome) {
+		return cozinhaRepository.consultarCozinhaPorNomeOrm(nome);
+	}
+	
+	@GetMapping("por-nome-jpql")
+	public List<Cozinha> cozinhaPorNomeJpql(String nome) {
+		return cozinhaRepository.find(nome);
+	}
+	
+	@GetMapping("por-nome-dinamico")
+	public List<Cozinha> cozinhaPorNomeDinamico(String nome) {
+		return cozinhaRepository.findDinamico(nome);
+	}
+	
+	@GetMapping("por-nome-dois-primeiros")
+	public List<Cozinha> cozinhaPorNomeDoisPrimeiros(String nome) {
+		return cozinhaRepository.findTop2ByNomeContaining(nome);
+	}
+	
+	@GetMapping("por-nome-primeiro")
+	public Optional<Cozinha> cozinhaPorNomePrimeiro(String nome) {
+		return cozinhaRepository.findFirstByNomeContaining(nome);
+	}
+	
+	@GetMapping("por-nome-criteria")
+	public List<Cozinha> cozinhaPorNomeCriteria(String nome) {
+		return cozinhaRepository.findCriteria(nome);
+	}
 }

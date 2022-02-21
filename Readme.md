@@ -33,13 +33,29 @@
 
 ##### DELETE /cozinhas/{id}: localhost:8080/cozinhas/1 - Excluir uma cozinha existente
 
-##### GET /cozinhas/unica-por-nome: - Buscar uma cozinha específica por nome
+##### GET /cozinhas/por-nome: - Buscar uma lista de cozinhas existentes filtrando por nome
 ##### KEYS: nome; VALUES: String;
 
-##### GET /cozinhas/por-nome: - Buscar uma lista de cozinhas existentes no banco de dados por nome
+##### GET /cozinhas/por-nome-customizada: - Buscar uma lista de cozinhas existentes filtrando por nome
+##### KEYS: nome; VALUES: String;.
+
+##### GET /cozinhas/por-nome-orm: - Buscar uma lista de cozinhas existentes filtrando por nome
 ##### KEYS: nome; VALUES: String;
 
+##### GET /cozinhas/por-nome-jpql: - Buscar uma lista de cozinhas existentes filtrando por nome
+##### KEYS: nome; VALUES: String;
 
+##### GET /cozinhas/por-nome-dinamico: - Buscar uma lista de cozinhas existentes filtrando por nome
+##### KEYS: nome; VALUES: String;
+
+##### GET /cozinhas/por-nome-dinamico: - Buscar uma lista de cozinhas existentes filtrando por nome trazendo somente os dois primeiros resultados
+##### KEYS: nome; VALUES: String;
+
+##### GET /cozinhas/por-nome-dinamico: - Buscar uma lista de cozinhas existentes filtrando por nome trazendo somente o primeiro resultado
+##### KEYS: nome; VALUES: String;
+
+##### GET /cozinhas/por-nome-criteria: - Buscar uma lista de cozinhas existentes filtrando por nome
+##### KEYS: nome; VALUES: String;
 
 -------------------------------------------------------------------------------------------
 
