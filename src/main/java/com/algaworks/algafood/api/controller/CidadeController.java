@@ -118,4 +118,19 @@ public class CidadeController {
 	public List<Cidade> cidadePorNomeEEstado(String nome, Long estadoId) {
 		return cidadeRepository.findByNomeContainingAndEstadoId(nome, estadoId);
 	}
+	
+	@GetMapping("/duas-primeiras")
+	public List<Cidade> duasPrimeirasCidades() {
+		return cidadeRepository.findTwo();
+	}
+	
+	@GetMapping("/primeira")
+	public Optional<Cidade> primeiraCidade() {
+		return cidadeRepository.findFirst();
+	}
+	
+	@GetMapping("/estados")
+	public int cidadePorEstado(Long estadoId) {
+		return cidadeRepository.countByEstadoId(estadoId);
+	}
 }

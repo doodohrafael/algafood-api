@@ -114,7 +114,7 @@
 ##### GET /restaurantes/primeiro-por-nome: - Buscar primeiro restaurante encontrado filtrando por nome
 ##### KEYS: nome; VALUES: String;
 
-##### GET /restaurantes/cozinhas: - Buscar quantidades de restaurantes que uma cozinha tem filtrando pelo id da cozinha
+##### GET /restaurantes/cozinhas: - Buscar quantidade de restaurantes que uma cozinha tem filtrando pelo id da cozinha
 ##### KEYS: cozinhaId; VALUES: Long;
 
 ##### GET /restaurantes/primeiro: - Buscar primeiro restaurante encontrado
@@ -129,17 +129,22 @@
 ### As informações de Estado já podem ser consumidas através de seus end-points localmente;
 
 
-##### GET /estados/{id}: localhost:8080/estados/1 - Buscar um estado específico por id
+##### GET /estados/{id}: - Buscar um estado específico por id
 
-##### GET /estados: localhost:8080/estados - Buscar uma lista de todos os estados existentes no banco de dados
+##### GET /estados: - Buscar uma lista de todos os estados existentes no banco de dados
 
-##### POST /estados: localhost:8080/estados - Adicionar um novo estado
+##### POST /estados: - Adicionar um novo estado
 
-##### PUT /estados/{id}: localhost:8080/estados/2 - Atualizar um estado existente
+##### PUT /estados/{id}: - Atualizar um estado existente
 
-##### PATCH /estados/{id}: localhost:8080/estados/1 - Atualizar parcialmente um estado existente
+##### PATCH /estados/{id}: - Atualizar parcialmente um estado existente
 
-##### DELETE /estados/{id}: localhost:8080/estados/1 - Excluir um estado existente
+##### DELETE /estados/{id}: - Excluir um estado existente
+
+##### GET /estados/quantidade: - Buscar a quantidade de estados existentes no banco
+
+##### GET /estados/primeiro: - Buscar uma lista de estados existentes filtrando por nome trazendo somente o primeiro resultado
+
 
 -------------------------------------------------------------------------------------------
 
@@ -163,3 +168,5 @@
 
 ##### GET /cidades/por-nome-e-estado: - Buscar uma lista de cidades filtrando por nome e id de estado
 ##### KEYS: nome; estadoId; VALUES: String; Long;
+
+##### GET /cidades/quantidade: - Buscar a quantidade de cidades que um estado cadastrado tem

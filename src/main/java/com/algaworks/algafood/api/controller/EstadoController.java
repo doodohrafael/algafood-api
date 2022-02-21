@@ -107,4 +107,23 @@ public class EstadoController {
 		});
 	}
 	
+	@GetMapping("/quantidade")
+	public long quantidade() {
+		return estadoRepository.count();
+	}
+	
+	@GetMapping("/por-nome")
+	public List<Estado> nomesIguais(String nome) {
+		return estadoRepository.comNomesIguais(nome);
+	}
+	
+	@GetMapping("/primeiro")
+	public Optional<Estado> primeiroEstado(String nome) {
+		return estadoRepository.findFirst();
+	}
+	
+	@GetMapping("/por-nome-comecando-por")
+	public List<Estado> estadoPorNomeComecandoPor(String nome) {
+		return estadoRepository.findByNomeStartingWith(nome);
+	}
 }
