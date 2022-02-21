@@ -4,12 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import com.algaworks.algafood.domain.model.Cozinha;
 
-public interface CozinhaRepository extends JpaRepository<Cozinha, Long>, 
-CozinhaRepositoryQueries{
+public interface CozinhaRepository extends CustomJpaRepository<Cozinha, Long>, 
+CozinhaRepositoryQueries, JpaSpecificationExecutor<Cozinha>{
 	
 	List<Cozinha> findTodasByNome(String nome);
 	List<Cozinha> findByNomeContaining(String nome);

@@ -12,4 +12,6 @@ public interface CozinhaRepositoryQueries {
 	
 	List<Cozinha> findCriteria(String nome);
 	
+	List<Cozinha> comNomesSemelhantes(String nome);
+	
 }

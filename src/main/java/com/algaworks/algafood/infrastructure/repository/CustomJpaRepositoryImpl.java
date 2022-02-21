@@ -1,5 +1,6 @@
 package com.algaworks.algafood.infrastructure.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
@@ -26,6 +27,15 @@ implements CustomJpaRepository<T, ID>{
 				.setMaxResults(1)
 				.getSingleResult();
 		return Optional.ofNullable(entity);
+	}
+
+	@Override
+	public List<T> findTwo() {
+		var jpql = "from " + getDomainClass().getName();
+		List<T> entity = manager.createQuery(jpql, getDomainClass())
+				.setMaxResults(2)
+				.getResultList();
+		return entity;
 	}
 	
 	

@@ -194,4 +194,10 @@ public class RestauranteController {
 	public Optional<Restaurante> primeiroRestaurante() {
 		return restauranteRepository.findFirst();
 	}
+	
+	@GetMapping("/dois-primeiros-custom")
+	public List<Restaurante> doisPrimeirosRestaurantesCustom() {
+		return restauranteRepository.findTwo();
+	}
+	
 }

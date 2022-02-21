@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ReflectionUtils;
@@ -107,5 +108,14 @@ public class CidadeController {
 			
 		});
 	}
-
+	
+	@GetMapping("/por-nome")
+	public List<Cidade> cidadePorNome(String nome) {
+		return cidadeRepository.cidadePorNome(nome);
+	}
+	
+	@GetMapping("/por-nome-e-estado")
+	public List<Cidade> cidadePorNomeEEstado(String nome, Long estadoId) {
+		return cidadeRepository.findByNomeContainingAndEstadoId(nome, estadoId);
+	}
 }

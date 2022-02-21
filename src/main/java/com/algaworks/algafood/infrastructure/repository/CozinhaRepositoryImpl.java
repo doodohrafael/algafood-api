@@ -11,17 +11,24 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import com.algaworks.algafood.domain.model.Cozinha;
+import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.repository.CozinhaRepositoryQueries;
+import static com.algaworks.algafood.infrastructure.repository.specs.CozinhaSpecs.*;
 
 @Repository
 public class CozinhaRepositoryImpl implements CozinhaRepositoryQueries{
 
 	@PersistenceContext
 	private EntityManager manager;
+	
+	@Autowired @Lazy
+	private CozinhaRepository cozinhaRepository;
 	
 	@Override
 	public List<Cozinha> find(String nome) {
@@ -62,6 +69,11 @@ public class CozinhaRepositoryImpl implements CozinhaRepositoryQueries{
 		TypedQuery<Cozinha> query = manager.createQuery(criteria);
 		
 		return query.getResultList();
+	}
+
+	@Override
+	public List<Cozinha> comNomesSemelhantes(String nome) {
+		return cozinhaRepository.findAll(comNomeSemelhante(nome));
 	}
 	
 }

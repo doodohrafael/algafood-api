@@ -1,5 +1,7 @@
 package com.algaworks.algafood.api.controller;
 
+import static com.algaworks.algafood.infrastructure.repository.specs.CozinhaSpecs.*;
+
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -151,5 +153,15 @@ public class CozinhaController {
 	@GetMapping("por-nome-criteria")
 	public List<Cozinha> cozinhaPorNomeCriteria(String nome) {
 		return cozinhaRepository.findCriteria(nome);
+	}
+	
+	@GetMapping("/duas-primeiras-custom")
+	public List<Cozinha> duasPrimeirasCozinhasCustom() {
+		return cozinhaRepository.findTwo();
+	}
+	
+	@GetMapping("/nomes-semelhantes")
+	public List<Cozinha> cozinhasNomesSemelhantes(String nome) {
+		return cozinhaRepository.comNomesSemelhantes(nome);
 	}
 }

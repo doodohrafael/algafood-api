@@ -13,25 +13,24 @@
 
 ## Descrição: Projeto que estou desenvolvendo do Curso "Especialita Spring Rest" da AlgaWorks que ensina muito sobre o ecossistema Spring e APIs REST.  
 
-# Andamento: O projeto ainda está em desenvolvimento, ainda estou no final do 4º módulo do curso, porém já consegui absorver muito conhecimento até onde estou, pois meu conhecimento em Java e outras tecnologias ajudam bastante. Estou indo um pouco mais longe nos desafios, tratando todos os possíveis erros em requisições e retornando o Status de cada resposta o mais coerente possível. Ao final desse curso e projeto, quero fazer um upgrade nesse projeto buscando ainda mais conhecimento sobre APIs, Spring e outras tecs.
+# Andamento: O projeto ainda está em desenvolvimento, ainda estou no início do 6º módulo do curso, porém já consegui absorver muito conhecimento até onde estou, pois meu conhecimento em Java e outras tecnologias ajudam bastante. Estou indo um pouco mais longe nos desafios, tratando todos os possíveis erros em requisições e retornando o Status de cada resposta o mais coerente possível. Ao final desse curso e projeto, quero fazer um upgrade nesse projeto buscando ainda mais conhecimento sobre APIs, Spring e outras tecs.
 
 # Documentação
 
 ### As informações de Cozinha já podem ser consumidas através de seus end-points localmente;
-### Métodos existentes: Get, Post, Put, Patch e Delete;
 
 
-##### GET /cozinhas/{id}: localhost:8080/cozinhas/1 - Buscar uma cozinha específica por id
+##### GET /cozinhas/{id}: - Buscar uma cozinha específica por id
 
-##### GET /cozinhas: localhost:8080/cozinhas - Buscar uma lista de todas as cozinhas existentes no banco de dados
+##### GET /cozinhas: - Buscar uma lista de todas as cozinhas existentes no banco de dados
 
-##### POST /cozinhas: localhost:8080/cozinhas - Adicionar uma nova cozinha
+##### POST /cozinhas: - Adicionar uma nova cozinha
 
-##### PUT /cozinhas/{id}: localhost:8080/cozinhas/2 - Atualizar uma cozinha existente
+##### PUT /cozinhas/{id}: - Atualizar uma cozinha existente
 
-##### PATCH /cozinhas/{id}: localhost:8080/cozinhas/1 - Atualizar parcialmente uma cozinha existente
+##### PATCH /cozinhas/{id}: - Atualizar parcialmente uma cozinha existente
 
-##### DELETE /cozinhas/{id}: localhost:8080/cozinhas/1 - Excluir uma cozinha existente
+##### DELETE /cozinhas/{id}: - Excluir uma cozinha existente
 
 ##### GET /cozinhas/por-nome: - Buscar uma lista de cozinhas existentes filtrando por nome
 ##### KEYS: nome; VALUES: String;
@@ -57,10 +56,11 @@
 ##### GET /cozinhas/por-nome-criteria: - Buscar uma lista de cozinhas existentes filtrando por nome
 ##### KEYS: nome; VALUES: String;
 
+##### GET /cozinhas/por-nome-dinamico: - Buscar uma lista de cozinhas existentes trazendo somente os dois primeiros resultados
+
 -------------------------------------------------------------------------------------------
 
 ### As informações de Restaurante já podem ser consumidas através de seus end-points localmente;
-### Métodos existentes: Get, Post, Put, Patch e Delete;
 
 
 ##### GET /restaurantes/{id}: - Buscar um restaurante específico por id
@@ -118,13 +118,15 @@
 ##### KEYS: cozinhaId; VALUES: Long;
 
 ##### GET /restaurantes/primeiro: - Buscar primeiro restaurante encontrado
-##### KEYS: nome; VALUES: String;
+
+##### GET /restaurantes/dois-primeiros-custom: - Buscar uma lista de restaurantes trazendo somente os 2 primeiros resultados
+
+
 
 
 -------------------------------------------------------------------------------------------
 
 ### As informações de Estado já podem ser consumidas através de seus end-points localmente;
-### Métodos existentes: Get, Post, Put, Patch e Delete;
 
 
 ##### GET /estados/{id}: localhost:8080/estados/1 - Buscar um estado específico por id
@@ -142,17 +144,22 @@
 -------------------------------------------------------------------------------------------
 
 ### As informações de Cidade já podem ser consumidas através de seus end-points localmente;
-### Métodos existentes: Get, Post, Put, Patch e Delete;
 
 
-##### GET /cidades/{id}: localhost:8080/cidades/1 - Buscar uma cidade específica por id
+##### GET /cidades/{id}: - Buscar uma cidade específica por id
 
-##### GET /cidades: localhost:8080/cidades - Buscar uma lista de todas os cidades existentes no banco de dados
+##### GET /cidades: - Buscar uma lista de todas os cidades existentes no banco de dados
 
-##### POST /cidades: localhost:8080/cidades - Adicionar uma nova cidade
+##### POST /cidades: - Adicionar uma nova cidade
 
-##### PUT /cidades/{id}: localhost:8080/cidades/2 - Atualizar uma cidade existente
+##### PUT /cidades/{id}: - Atualizar uma cidade existente
 
-##### PATCH /cidades/{id}: localhost:8080/cidades/1 - Atualizar parcialmente uma cidade existente
+##### PATCH /cidades/{id}: - Atualizar parcialmente uma cidade existente
 
-##### DELETE /cidades/{id}: localhost:8080/cidades/1 - Excluir uma cidade existente
+##### DELETE /cidades/{id}: - Excluir uma cidade existente
+
+##### GET /cidades/por-nome-e-estado: - Buscar uma lista de cidades filtrando por nome
+##### KEYS: nome; VALUES: String;
+
+##### GET /cidades/por-nome-e-estado: - Buscar uma lista de cidades filtrando por nome e id de estado
+##### KEYS: nome; estadoId; VALUES: String; Long;
