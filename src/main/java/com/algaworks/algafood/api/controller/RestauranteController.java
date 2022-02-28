@@ -62,6 +62,18 @@ public class RestauranteController {
 	@PostMapping
 	public ResponseEntity<?> adicionar(@RequestBody Restaurante restaurante) {
 		try {
+			if(restaurante.getCozinha() == null) {
+				return ResponseEntity.badRequest().body("Ao adicionar um Restaurante, uma Cozinha também deve "
+						+ "ser adicionada. \n"
+						+ "Exemplo: "
+						+ "\n{\n"
+						+ "    \"nome\": \"Nome do Restaurante\",\n"
+						+ "    \"taxaFrete\": 12.00,\n"
+						+ "    \"cozinha\": {\n"
+						+ "        \"id\": 2\n"
+						+ "    }\n"
+						+ "}");
+			}
 			restaurante = cadastroRestautante.salvar(restaurante);
 			return ResponseEntity.status(HttpStatus.CREATED).body(restaurante);
 		} catch (EntidadeNaoEncontradaException e) {
@@ -72,11 +84,27 @@ public class RestauranteController {
 	@PutMapping("/{restauranteId}")
 	public ResponseEntity<?> atualizar(@PathVariable Long restauranteId, @RequestBody Restaurante restaurante) {
 		Optional<Restaurante> restauranteAtual = restauranteRepository.findById(restauranteId);
-		Optional<Cozinha> cozinhaAtual = cozinhaRepository.findById(restaurante.getCozinha().getId());
+		Optional<Cozinha> cozinhaAtual = null;
+		if(restaurante.getCozinha() == null) {
+			return ResponseEntity.badRequest().body("Ao atualizar um Restaurante, uma Cozinha também deve "
+					+ "ser adicionada. \n"
+					+ "Exemplo: "
+					+ "\n{\n"
+					+ "    \"nome\": \"Nome do Restaurante\",\n"
+					+ "    \"taxaFrete\": 12.00,\n"
+					+ "    \"cozinha\": {\n"
+					+ "        \"id\": 2\n"
+					+ "    }\n"
+					+ "}");
+		}else {
+			cozinhaAtual = cozinhaRepository.findById(restaurante.getCozinha().getId());
+		}
 		if(restauranteAtual.isPresent() && cozinhaAtual.isPresent()) {
-			BeanUtils.copyProperties(restaurante, restauranteAtual.get(), "id", "formasPagamento");
+			BeanUtils.copyProperties(restaurante, 
+					restauranteAtual.get(), "id", "formasPagamento", 
+					"endereco", "dataCadastro");
 			cadastroRestautante.salvar(restauranteAtual.get());
-			return ResponseEntity.ok().body(restaurante);
+			return ResponseEntity.ok().body(restauranteAtual);
 		} else if(restauranteAtual.isPresent() && cozinhaAtual.isEmpty()) {
 			return ResponseEntity.badRequest().body("Não existe cadastro de cozinha com o código " 
 		+ restaurante.getCozinha().getId() );
