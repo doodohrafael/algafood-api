@@ -13,7 +13,7 @@
 
 ## Descrição: Projeto que estou desenvolvendo do Curso "Especialita Spring Rest" da AlgaWorks que ensina muito sobre o ecossistema Spring e APIs REST.  
 
-# Andamento: O projeto ainda está em desenvolvimento, ainda estou no início do 6º módulo do curso, porém já consegui absorver muito conhecimento até onde estou, pois meu conhecimento em Java e outras tecnologias ajudam bastante. Estou indo um pouco mais longe nos desafios, tratando todos os possíveis erros em requisições e retornando o Status de cada resposta o mais coerente possível. Ao final desse curso e projeto, quero fazer um upgrade nesse projeto buscando ainda mais conhecimento sobre APIs, Spring e outras tecs.
+# Andamento: O projeto ainda está em desenvolvimento, ainda estou no início do 7º módulo do curso, porém já consegui absorver muito conhecimento até onde estou, pois meu conhecimento em Java e outras tecnologias ajudam bastante. Estou indo um pouco mais longe nos desafios, tratando todos os possíveis erros em requisições e retornando o Status de cada resposta o mais coerente possível. Ao final desse curso e projeto, quero fazer um upgrade nesse projeto buscando ainda mais conhecimento sobre APIs, Spring e outras tecs.
 
 # Documentação
 
