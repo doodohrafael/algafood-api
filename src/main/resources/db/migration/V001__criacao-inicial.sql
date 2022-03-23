@@ -3,4 +3,4 @@ create table cozinha (
     nome varchar(60),
     
     primary key (id)
-) engine=InnoDB default charset=utf8;
+) engine=InnoDB default charset=utf8mb4;
