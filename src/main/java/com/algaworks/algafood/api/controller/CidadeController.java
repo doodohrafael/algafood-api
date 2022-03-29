@@ -7,7 +7,6 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ReflectionUtils;
@@ -53,48 +52,30 @@ public class CidadeController {
 	}
 
 	@GetMapping("/{cidadeId}")
-	public ResponseEntity<Cidade> buscar(@PathVariable Long cidadeId) {
-		Optional<Cidade> cidade = cidadeRepository.findById(cidadeId);
-		if (cidade.isPresent()) {
-			return ResponseEntity.ok(cidade.get());
-		}
-		return ResponseEntity.notFound().build();
-
+	public Cidade buscar(@PathVariable Long cidadeId) {
+		return cadastroCidade.buscarOuFalhar(cidadeId);
 	}
 
 	@PutMapping("/{cidadeId}")
-	public ResponseEntity<?> atualizar(@PathVariable Long cidadeId, @RequestBody Cidade cidade) {
-		Optional<Cidade> cidadeAtual = cidadeRepository.findById(cidadeId);
-		if (cidadeAtual.isPresent()) {
-			BeanUtils.copyProperties(cidade, cidadeAtual.get(), "id");
-			cidade = cadastroCidade.salvar(cidadeAtual.get());
-			return ResponseEntity.ok(cidade);
-		}
-
-		return ResponseEntity.notFound().build();
+	public Cidade atualizar(@PathVariable Long cidadeId, @RequestBody Cidade cidade) {
+		Cidade cidadeAtual = cadastroCidade.buscarOuFalhar(cidadeId);
+		BeanUtils.copyProperties(cidade, cidadeAtual, "id");
+		
+		return cadastroCidade.salvar(cidadeAtual);
 	}
 
 	@DeleteMapping("/{cidadeId}")
-	public ResponseEntity<?> excluir(@PathVariable Long cidadeId) {
-		try {
-			cadastroCidade.excluir(cidadeId);
-			return ResponseEntity.noContent().build();
-		} catch (EntidadeNaoEncontradaException e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-		}
+	public void excluir(@PathVariable Long cidadeId) {
+		cadastroCidade.excluir(cidadeId);
 	}
 
 	@PatchMapping("/{cidadeId}")
-	public ResponseEntity<?> atualizarParcial(@PathVariable Long cidadeId,
+	public Cidade atualizarParcial(@PathVariable Long cidadeId,
 			@RequestBody Map<String, Object> campos) {
-		Optional<Cidade> cidadeAtual = cidadeRepository.findById(cidadeId);
-		if(cidadeAtual == null) {
-			return ResponseEntity.notFound().build();
-		}
-
-		merge(campos, cidadeAtual.get());
+		Cidade cidadeAtual = cadastroCidade.buscarOuFalhar(cidadeId);
+		merge(campos, cidadeAtual);
 		
-		return atualizar(cidadeId, cidadeAtual.get());
+		return atualizar(cidadeId, cidadeAtual);
 	}
 
 	public void merge(Map<String, Object> dadosOrigem, Cidade cidadeDestino) {

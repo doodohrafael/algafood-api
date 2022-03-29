@@ -43,12 +43,8 @@ public class EstadoController {
 	}
 	
 	@GetMapping("/{estadoId}")
-	public ResponseEntity<Estado> buscar(@PathVariable Long estadoId) {
-		Optional<Estado> estado = estadoRepository.findById(estadoId);
-		if(estado.isPresent()) {
-			return ResponseEntity.ok(estado.get());
-		}
-		return ResponseEntity.notFound().build();
+	public Estado buscar(@PathVariable Long estadoId) {
+		return cadastroEstado.buscarOuFalhar(estadoId);
 	}
 	
 	@PostMapping
@@ -58,41 +54,24 @@ public class EstadoController {
 	}
 	
 	@PutMapping("/{estadoId}")
-	public ResponseEntity<Estado> atualizar(@PathVariable Long estadoId, @RequestBody Estado estado) {
-		Optional<Estado> estadoAtual = estadoRepository.findById(estadoId);
-		if(estadoAtual.isPresent()) {
-			BeanUtils.copyProperties(estado, estadoAtual.get(), "id");
-			estado = estadoRepository.save(estadoAtual.get());
-			return ResponseEntity.status(HttpStatus.OK).body(estado);
-		}
-		
-		return ResponseEntity.notFound().build();
+	public Estado atualizar(@PathVariable Long estadoId, @RequestBody Estado estado) {
+		Estado estadoAtual = cadastroEstado.buscarOuFalhar(estadoId);
+		BeanUtils.copyProperties(estado, estadoAtual, "id");
+		return estadoRepository.save(estadoAtual);
 	}
 	
 	@DeleteMapping("/{estadoId}")
-	public ResponseEntity<?> excluir(@PathVariable Long estadoId) {
-		try {
-			cadastroEstado.excluir(estadoId);
-			return ResponseEntity.noContent().build();
-		} catch (EntidadeEmUsoExcption e) {
-			e.printStackTrace();
-			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-		} catch (EntidadeNaoEncontradaException e) {
-			return ResponseEntity.notFound().build();
-		}
+	public void excluir(@PathVariable Long estadoId) {
+		cadastroEstado.excluir(estadoId);
 	}
 	
 	@PatchMapping("/{estadoId}")
-	public ResponseEntity<Estado> atualizarParcial(@PathVariable Long estadoId,
+	public Estado atualizarParcial(@PathVariable Long estadoId,
 			@RequestBody Map<String, Object> campos) {
-		Optional<Estado> estadoAtual = estadoRepository.findById(estadoId);
-		if(estadoAtual.isEmpty()) {
-			return ResponseEntity.notFound().build();
-		}
-
-		merge(campos, estadoAtual.get());
+		Estado estadoAtual = cadastroEstado.buscarOuFalhar(estadoId);
+		merge(campos, estadoAtual);
 		
-		return atualizar(estadoId, estadoAtual.get());
+		return atualizar(estadoId, estadoAtual);
 	}
 
 	public void merge(Map<String, Object> dadosOrigem, Estado estadoDestino) {
