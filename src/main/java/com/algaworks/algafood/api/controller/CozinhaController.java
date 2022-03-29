@@ -49,12 +49,9 @@ public class CozinhaController {
 	}
 
 	@GetMapping("/{cozinhaId}")
-	public ResponseEntity<Cozinha> buscar(@PathVariable Long cozinhaId) {
-		Optional<Cozinha> cozinha = cozinhaRepository.findById(cozinhaId);
-		if (cozinha.isPresent()) {
-			return ResponseEntity.ok(cozinha.get());
-		}
-		return ResponseEntity.notFound().build();
+	public Cozinha buscar(@PathVariable Long cozinhaId) {
+		return cadastroCozinha.buscarOuFalhar(cozinhaId);
+		
 	}
 
 
@@ -66,40 +63,24 @@ public class CozinhaController {
 
 	
 	@PutMapping("/{cozinhaId}")
-	public ResponseEntity<Cozinha> atualizar(@PathVariable Long cozinhaId, @RequestBody Cozinha cozinha) {
-			Optional<Cozinha> cozinhaAtual = cozinhaRepository.findById(cozinhaId);
-			if(cozinhaAtual.isPresent()) {
-				BeanUtils.copyProperties(cozinha, cozinhaAtual.get(), "id");
-				cadastroCozinha.salvar(cozinhaAtual.get());
-				return ResponseEntity.status(HttpStatus.OK).body(cozinhaAtual.get());
-			}
-			
-			return ResponseEntity.notFound().build();
+	public Cozinha atualizar(@PathVariable Long cozinhaId, @RequestBody Cozinha cozinha) {
+		Cozinha cozinhaAtual = cadastroCozinha.buscarOuFalhar(cozinhaId);
+		BeanUtils.copyProperties(cozinha, cozinhaAtual, "id");
+		return cadastroCozinha.salvar(cozinhaAtual);
 	}
 
 
 	@DeleteMapping("/{cozinhaId}")
-	public ResponseEntity<?> remover(@PathVariable Long cozinhaId) {
-		try {
-			cadastroCozinha.excluir(cozinhaId);
-			return ResponseEntity.noContent().build();
-		} catch (EntidadeNaoEncontradaException e) {
-			return ResponseEntity.notFound().build();
-		} catch (EntidadeEmUsoExcption e) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-		}
+	public void remover(@PathVariable Long cozinhaId) {
+		 cadastroCozinha.excluir(cozinhaId);
 	}
 	
 	@PatchMapping("/{cozinhaId}")
-	public ResponseEntity<Cozinha> atualizarParcial(@PathVariable Long cozinhaId, @RequestBody Map<String, Object> campos){
-		Optional<Cozinha> cozinhaAtual = cozinhaRepository.findById(cozinhaId);
-		if(cozinhaAtual.isEmpty()) {
-			return ResponseEntity.notFound().build();
-		}
+	public Cozinha atualizarParcial(@PathVariable Long cozinhaId, @RequestBody Map<String, Object> campos){
+		Cozinha cozinhaAtual = cadastroCozinha.buscarOuFalhar(cozinhaId);
+		merge(campos, cozinhaAtual);
 		
-		merge(campos, cozinhaAtual.get());
-		
-		return atualizar(cozinhaId, cozinhaAtual.get());
+		return atualizar(cozinhaId, cozinhaAtual);
 	}
 	
 	private void merge(Map<String, Object> dadosOrigem, Cozinha cozinhaDestino) {
