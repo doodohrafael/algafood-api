@@ -120,4 +120,5 @@ public class CidadeController {
 	public int cidadePorEstado(Long estadoId) {
 		return cidadeRepository.countByEstadoId(estadoId);
 	}
+	
 }
