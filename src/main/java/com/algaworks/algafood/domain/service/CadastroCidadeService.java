@@ -7,7 +7,7 @@ import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
 
 import com.algaworks.algafood.domain.exception.CidadeNaoEncontradaException;
-import com.algaworks.algafood.domain.exception.EntidadeEmUsoExcption;
+import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.model.Cidade;
 import com.algaworks.algafood.domain.model.Estado;
 import com.algaworks.algafood.domain.repository.CidadeRepository;
@@ -43,7 +43,7 @@ public class CadastroCidadeService {
 		} catch (EmptyResultDataAccessException e) {
 			throw new CidadeNaoEncontradaException(cidadeId);
 		} catch (DataIntegrityViolationException e) {
-			throw new EntidadeEmUsoExcption(
+			throw new EntidadeEmUsoException(
 					String.format(MSG_CIDADE_EM_USO, cidadeId));
 		}
 	}

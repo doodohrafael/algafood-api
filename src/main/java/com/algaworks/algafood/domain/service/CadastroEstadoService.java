@@ -5,7 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import com.algaworks.algafood.domain.exception.EntidadeEmUsoExcption;
+import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EstadoNaoEncontradoException;
 import com.algaworks.algafood.domain.model.Estado;
 import com.algaworks.algafood.domain.repository.EstadoRepository;
@@ -27,7 +27,7 @@ public class CadastroEstadoService {
 		try {
 			estadoRepository.deleteById(estadoId);
 		} catch (DataIntegrityViolationException e) {
-			throw new EntidadeEmUsoExcption(
+			throw new EntidadeEmUsoException(
 					String.format(MSG_ESTADO_EM_USO, estadoId));
 		} catch (IllegalArgumentException e) {
 			throw new EstadoNaoEncontradoException(estadoId);
