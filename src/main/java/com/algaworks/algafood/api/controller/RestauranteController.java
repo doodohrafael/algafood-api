@@ -59,9 +59,7 @@ public class RestauranteController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Restaurante adicionar(@RequestBody @Validated(Groups.CadastroRestaunte.class) 
-		Restaurante restaurante) {
-		
+	public Restaurante adicionar(@RequestBody @Valid Restaurante restaurante) {
 		try {
 			return cadastroRestautante.salvar(restaurante);
 		} catch (CozinhaNaoEncontradaException e) {
