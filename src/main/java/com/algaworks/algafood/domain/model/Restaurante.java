@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import core.validation.Groups;
+import core.validation.Multiplo;
 import core.validation.TaxaFrete;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -48,6 +49,7 @@ public class Restaurante {
 	@Column(nullable = false)
 	private String nome;
 	
+	@Multiplo(numero = 5)
 	@TaxaFrete
 	@NotNull
 	@Column(name = "taxa_frete", nullable = false)
