@@ -37,7 +37,7 @@ import com.algaworks.algafood.domain.service.CadastroRestauranteService;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import core.validation.ValidationException;
+import core.validation.ValidacaoException;
 
 @RestController
 @RequestMapping("/restaurantes")
@@ -105,7 +105,7 @@ public class RestauranteController {
 		BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(restaurante, objectName);
 		validator.validate(restaurante, bindingResult);
 		if (bindingResult.hasErrors()) {
-			throw new ValidationException(bindingResult);
+			throw new ValidacaoException(bindingResult);
 		}
 	}
 
