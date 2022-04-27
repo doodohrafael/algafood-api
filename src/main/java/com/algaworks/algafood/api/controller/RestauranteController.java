@@ -16,7 +16,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.util.ReflectionUtils;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.validation.BeanPropertyBindingResult;
+import org.springframework.validation.SmartValidator;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -36,7 +37,7 @@ import com.algaworks.algafood.domain.service.CadastroRestauranteService;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import core.validation.Groups;
+import core.validation.ValidationException;
 
 @RestController
 @RequestMapping("/restaurantes")
@@ -47,6 +48,9 @@ public class RestauranteController {
 
 	@Autowired
 	private RestauranteRepository restauranteRepository;
+	
+	@Autowired
+	private SmartValidator validator;
 	
 	@GetMapping("/{restauranteId}")
 	public Restaurante buscar(@PathVariable Long restauranteId) {
@@ -92,10 +96,19 @@ public class RestauranteController {
 			@RequestBody Map<String, Object> campos, HttpServletRequest request){
 		Restaurante restauranteAtual = cadastroRestautante.buscarOuFalhar(restauranteId);
 		merge(campos, restauranteAtual, request);
+		validate(restauranteAtual, "restaurante");
 		
 		return atualizar(restauranteId, restauranteAtual);
 	}
 	
+	private void validate(Restaurante restaurante, String objectName) {
+		BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(restaurante, objectName);
+		validator.validate(restaurante, bindingResult);
+		if (bindingResult.hasErrors()) {
+			throw new ValidationException(bindingResult);
+		}
+	}
+
 	private void merge(Map<String, Object> dadosOrigem, Restaurante restauranteDestino, 
 			HttpServletRequest request) {
 		ServletServerHttpRequest servletHttpRequest = new ServletServerHttpRequest(request);

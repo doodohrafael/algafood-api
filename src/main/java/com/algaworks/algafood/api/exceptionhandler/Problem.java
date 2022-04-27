@@ -22,11 +22,11 @@ public class Problem {
 	private String userMessage;
 	private LocalDateTime timestamp;
 	
-	private List<Problem.Field> fields;
+	private List<Problem.Object> objects;
 	
 	@Getter
 	@Builder
-	public static class Field {
+	public static class Object {
 		private String name;
 		private String userMessage;
 	}

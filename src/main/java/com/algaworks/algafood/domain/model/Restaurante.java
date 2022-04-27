@@ -32,9 +32,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import core.validation.Groups;
 import core.validation.Multiplo;
 import core.validation.TaxaFrete;
+import core.validation.ValorZeroInclueDescricao;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+@ValorZeroInclueDescricao(valorField = "taxaFrete", descricaoField = "nome", 
+		descricaoObrigatoria = "Frete Grátis")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Data
 @Entity
