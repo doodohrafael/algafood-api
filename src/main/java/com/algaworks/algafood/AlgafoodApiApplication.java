@@ -6,7 +6,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.algaworks.algafood.infrastructure.repository.CustomJpaRepositoryImpl;
 
-@SpringBootApplication @EnableJpaRepositories(repositoryBaseClass = CustomJpaRepositoryImpl.class)
+@SpringBootApplication 
+@EnableJpaRepositories(repositoryBaseClass = CustomJpaRepositoryImpl.class)
 public class AlgafoodApiApplication {
 
 	public static void main(String[] args) {
