@@ -23,10 +23,10 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class Cozinha {
 
-	@NotNull(groups = Groups.CozinhaId.class)
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NotNull(groups = Groups.CozinhaId.class)
 	private Long id;
 
 	@NotBlank

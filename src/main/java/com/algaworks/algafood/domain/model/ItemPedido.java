@@ -14,8 +14,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Entity
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ItemPedido {
 	
 	@Id
