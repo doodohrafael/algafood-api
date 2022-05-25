@@ -1,4 +1,4 @@
-package core.validation;
+package com.algaworks.algafood.core.validation;
 
 import org.springframework.validation.BindingResult;
 

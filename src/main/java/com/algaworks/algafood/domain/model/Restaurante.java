@@ -26,13 +26,13 @@ import javax.validation.groups.Default;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.algaworks.algafood.core.validation.Groups;
+import com.algaworks.algafood.core.validation.Multiplo;
+import com.algaworks.algafood.core.validation.TaxaFrete;
+import com.algaworks.algafood.core.validation.ValorZeroInclueDescricao;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import core.validation.Groups;
-import core.validation.Multiplo;
-import core.validation.TaxaFrete;
-import core.validation.ValorZeroInclueDescricao;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
