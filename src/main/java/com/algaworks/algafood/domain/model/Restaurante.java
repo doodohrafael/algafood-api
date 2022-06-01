@@ -52,7 +52,7 @@ public class Restaurante {
 	@Column(nullable = false)
 	private String nome;
 	
-	@Multiplo(numero = 5)
+//	@Multiplo(numero = 5)
 	@TaxaFrete
 	@NotNull
 	@Column(name = "taxa_frete", nullable = false)
