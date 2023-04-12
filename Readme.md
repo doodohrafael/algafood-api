@@ -1,7 +1,7 @@
 
 # API de Delivery de Comida
 
-API de Delivery de Comida feito para disponibilizar serviços de restaurantes.
+API de Delivery de Comida feita para disponibilizar serviços de restaurantes.
 
 ## Stack utilizada
 
