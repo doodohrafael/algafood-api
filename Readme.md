@@ -504,3 +504,20 @@ Recebe o nome do restaurante e os valores numéricos da taxaInicial e taxaFinal 
 Caso não informe nenhum parâmetro, serão retornas todos os restaurantes.
 Você pode usar nenhum, um, dois ou todos os parâmetros.
 
+
+## 
+
+#### RETORNA UM RESTAURANTE POR TAXA INICIAL E TAXA FINAL. ESSES VALORES SÃO REFERENTE AOS VALORES DE TAXA DE FRETE:
+
+```http
+  GET /restaurantes/por-taxa-frete
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `taxaInicial`  | `BigDecimal` | **É Obrigatório** informar o valor numérico (Ex: 04.22) da taxaInicial do restaurante que você quer buscar |
+| `taxaFinal`    | `BigDecimal` | **É Obrigatório** informar o valor numérico (Ex: 04.22) da taxaFinal do restaurante que você quer buscar |
+
+#### Serviço: restaurantePorTaxaFrete(BigDecimal taxaInicial, BigDecimal taxaFinal).
+
+Recebe os valores numéricos da taxaInicial e taxaFinal do restaurante e retorna um ou mais restaurantes de acordo com a taxaInicial e taxaFinal.
