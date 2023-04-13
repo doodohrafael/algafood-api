@@ -30,7 +30,7 @@ API de Delivery de Comida criada para disponibilizar serviços de restaurantes.
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `cozinhaId`      | `Long` | **Obrigatório**. O ID da cozinha que você quer buscar |
+| `cozinhaId`      | `Long` | É **Obrigatório** informar o ID da cozinha que você quer buscar |
 
 #### Serviço: buscar(Long cozinhaId).
 
@@ -63,7 +63,7 @@ Retorna todas as cozinhas.
 
 | Parâmetro   | Tipo  | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `Cozinha`  | `json` | **Obrigatório**. Recebe um arquivo Json e adiciona no DB |
+| `Cozinha`  | `json` | É **Obrigatório** informar o arquivo Json. |
 
 #### Serviço: adicionar(Cozinha cozinha).
 
@@ -80,8 +80,8 @@ Adiciona uma nova cozinha e retorna a cozinha adicionada.
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `cozinhaId`      | `Long` | **Obrigatório**. O ID da cozinha que você quer atualizar |
-| `Cozinha`  | `json` | **Obrigatório**. Recebe um arquivo Json e atualiza no DB |
+| `cozinhaId`      | `Long` | *É **Obrigatório** informar o ID da cozinha que você quer atualizar |
+| `Cozinha`  | `json` | *É **Obrigatório** informar o arquivo Json.  |
 
 #### Serviço: atualizar(Long cozinhaId, Cozinha cozinha).
 
@@ -98,8 +98,8 @@ Recebe o id da cozinha e a cozinha em json, atualiza a cozinha existente e retor
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `cozinhaId`      | `Long` | **Obrigatório**. O ID da cozinha que você quer atualizar |
-| `Cozinha`  | `json` | **Obrigatório**. Recebe um arquivo Json e atualiza no DB |
+| `cozinhaId`      | `Long` | *É **Obrigatório** informar o ID da cozinha que você quer atualizar |
+| `Cozinha`  | `json` | *É **Obrigatório** informar o arquivo Json. |
 
 #### Serviço: atualizarParcial(Long cozinhaId, Cozinha cozinha).
 
@@ -116,7 +116,7 @@ Recebe o id da cozinha e a cozinha em json, atualiza a cozinha existente e retor
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `cozinhaId`      | `Long` | **Obrigatório**. O ID da cozinha que você quer deletar |
+| `cozinhaId`      | `Long` | *É **Obrigatório** informar o ID da cozinha que você quer deletar |
 
 #### Serviço: remover(Long cozinhaId).
 
@@ -133,7 +133,7 @@ Recebe o id da cozinha, deleta a cozinha existente e retorna um "no content - 20
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `nome`      | `string` | **Obrigatório**. O nome da cozinha que você quer buscar |
+| `nome`      | `string` | *É **Obrigatório** informar o nome da cozinha que você quer buscar |
 
 #### Serviço: cozinhasPorNome(String nome).
 
@@ -150,7 +150,7 @@ Recebe o nome da cozinha e retorna uma ou várias cozinhas de acordo com o nome.
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `nome`      | `string` | **Obrigatório**. O nome da cozinha que você quer buscar |
+| `nome`      | `string` | *É **Obrigatório** informar o nome da cozinha que você quer buscar |
 
 #### Serviço: cozinhaPorNomeCustomizada(String nome).
 
@@ -167,7 +167,7 @@ Recebe o nome da cozinha e retorna uma ou várias cozinhas de acordo com o nome.
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `nome`      | `string` | **Obrigatório**. O nome da cozinha que você quer buscar |
+| `nome`      | `string` | *É **Obrigatório** informar o nome da cozinha que você quer buscar |
 
 #### Serviço: cozinhaPorNomeOrm(String nome).
 
@@ -184,7 +184,7 @@ Recebe o nome da cozinha e retorna uma ou várias cozinhas de acordo com o nome.
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `nome`      | `string` | **Obrigatório**. O nome da cozinha que você quer buscar |
+| `nome`      | `string` | *É **Obrigatório** informar o nome da cozinha que você quer buscar |
 
 #### Serviço: cozinhaPorNomeJpql(String nome).
 
@@ -201,7 +201,7 @@ Recebe o nome da cozinha e retorna uma ou várias cozinhas de acordo com o nome.
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `nome`      | `string` | **Obrigatório**. O nome da cozinha que você quer buscar |
+| `nome`      | `string` | **Não é Obrigatório** informar o nome da cozinha que você quer buscar. Caso não informe, serão retornadas todas as cozinhas.  |
 
 #### Serviço: cozinhaPorNomeDinamico(String nome).
 
@@ -222,7 +222,7 @@ Recebe o nome da cozinha e retorna uma ou várias cozinhas de acordo com o nome.
 
 #### Serviço: cozinhaPorNomeDoisPrimeiros(String nome).
 
-Recebe o nome da cozinha e retorna as duas primeiras cozinhas do DB.
+Recebe o nome da cozinha e retorna as duas primeiras cozinhas do DB de acordo com o nome informado.
 
 
 ## 
@@ -235,11 +235,11 @@ Recebe o nome da cozinha e retorna as duas primeiras cozinhas do DB.
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `nome`      | `string` | **Obrigatório**. O nome da cozinha que você quer buscar |
+| `nome`      | `string` | **É Obrigatório** informar nome da cozinha que você quer buscar |
 
 #### Serviço: cozinhaPorNomePrimeiro(String nome).
 
-Recebe o nome da cozinha e retorna a primeira cozinha específica de acordo com o nome.
+Recebe o nome da cozinha e retorna a primeira cozinha específica de acordo com o nome informado.
 
 
 ## 
@@ -252,7 +252,7 @@ Recebe o nome da cozinha e retorna a primeira cozinha específica de acordo com 
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `nome`      | `string` | **Obrigatório**. O nome da cozinha que você quer buscar |
+| `nome`      | `string` |  **Não é Obrigatório** informar o nome da cozinha que você quer buscar. Caso não informe, serão retornadas todas as cozinhas. |
 
 #### Serviço: cozinhaPorNomeCriteria(String nome).
 
@@ -271,7 +271,7 @@ Recebe o nome da cozinha e retorna uma ou várias cozinhas de acordo com o nome.
 
 #### Serviço: duasPrimeirasCozinhasCustom().
 
-Retorna duas cozinhas aleatoriamente do DB.
+Retorna as duas primeiras cozinhas do DB.
 
 
 ## 
@@ -284,8 +284,28 @@ Retorna duas cozinhas aleatoriamente do DB.
 
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
-| `nome`      | `string` | **Obrigatório**. O nome da cozinha que você quer buscar |
+| `nome`      | `string` | **É Obrigatório** informar o nome da cozinha que você quer buscar |
 
 #### Serviço: cozinhasNomesSemelhantes(String nome).
 
 Recebe o nome da cozinha e retorna uma ou várias cozinhas de acordo com o nome.
+
+
+# | --------------------------------------------------- |
+
+### Serviços de Cozinha
+
+#### RETORNA UM RESTAURANTE EXISTENTE POR ID:
+
+```http
+  GET /restaurantes/{restauranteId}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `restauranteId`| `Long` | **É Obrigatório** informar o ID do restaurante que você quer buscar |
+
+#### Serviço: buscar(Long restauranteId).
+
+Recebe o id da cozinha e retorna uma cozinha específica de acordo com o ID.
+
