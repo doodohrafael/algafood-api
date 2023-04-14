@@ -293,7 +293,7 @@ Recebe o nome da cozinha e retorna uma ou várias cozinhas de acordo com o nome.
 
 # | --------------------------------------------------- |
 
-### Serviços de Cozinha
+### Serviços de Restaurante
 
 #### RETORNA UM RESTAURANTE EXISTENTE POR ID:
 
