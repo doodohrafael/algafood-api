@@ -521,3 +521,140 @@ Você pode usar nenhum, um, dois ou todos os parâmetros.
 #### Serviço: restaurantePorTaxaFrete(BigDecimal taxaInicial, BigDecimal taxaFinal).
 
 Recebe os valores numéricos da taxaInicial e taxaFinal do restaurante e retorna um ou mais restaurantes de acordo com a taxaInicial e taxaFinal.
+
+
+## 
+
+#### RETORNA SE UM RESTAURANTE EXISTE POR NOME:
+
+```http
+  GET /restaurantes/existe
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `nome`      | `String` | **É Obrigatório** informar o nome do restaurante que você quer buscar |
+
+#### Serviço: restauranteExiste(String nome).
+
+Recebe o nome do restaurante e retorna um restaurante existente de acordo com o nome.
+
+
+## 
+
+#### RETORNA OS DOIS PRIMEIROS RESTAURANTES EXISTENTES:
+
+```http
+  GET /restaurantes/dois-primeiros
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `nome`      | `String` | **É Obrigatório** informar o nome dO restaurante que você quer buscar |
+
+#### Serviço: cozinhaPorNomeDoisPrimeiros(String nome).
+
+Recebe o nome do restaurante e retorna os dois primeiros restaurantes do DB de acordo com o nome informado.
+
+
+## 
+
+#### RETORNA UM RESTAURANTE POR NOME, TAXA INICIAL E TAXA FINAL. ESSES VALORES SÃO REFERENTE AOS VALORES DE TAXA DE FRETE:
+
+```http
+  GET /restaurantes/por-nome-e-frete-criteria
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `nome`      | `String` | **Não É Obrigatório** informar o nome do restaurante que você quer buscar |
+| `taxaInicial`  | `BigDecimal` | **Não É Obrigatório** informar o valor numérico (Ex: 04.22) da taxaInicial do restaurante que você quer buscar |
+| `taxaFinal`    | `BigDecimal` | **Não É Obrigatório** informar o valor numérico (Ex: 04.22) da taxaFinal do restaurante que você quer buscar |
+
+#### Serviço: restaurantesPorNomeFreteCriteria(String nome, BigDecimal taxaInicial, BigDecimal taxaFinal).
+
+Recebe o nome do restaurante e os valores numéricos da taxaInicial e taxaFinal do restaurante e retorna um ou mais restaurantes de acordo com o nome, a taxaInicial e taxaFinal.
+Caso não informe nenhum parâmetro, serão retornas todos os restaurantes.
+Você pode usar nenhum, um, dois ou todos os parâmetros.
+
+
+## 
+
+#### RETORNA UM OU MAIS RESTAURANTES EXISTENTES:
+
+```http
+  GET /restaurantes/por-nome-com-frete-gratis
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `nome`      | `String` | **É Obrigatório** informar o nome dO restaurante que você quer buscar |
+
+#### Serviço: restaurantesComFreteGratis(String nome).
+
+Recebe o nome do restaurante e retorna um ou mais restaurantes de acordo com o nome e que possuam a taxa de frete grátis (0.00).
+
+
+## 
+
+#### RETORNA UM RESTAURANTE EXISTENTE POR NOME:
+
+```http
+  GET /restaurantes/primeiro-por-nome
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `nome`      | `String` | **É Obrigatório** informar nome do restaurante que você quer buscar |
+
+#### Serviço: primeiroRestaurante(String nome).
+
+Recebe o nome da restaurante e retorna o primeiro restaurante específico de acordo com o nome informado.
+
+
+## 
+
+#### RETORNA A QUANTIDADE DE RESTAURANTES EM QUE A COZINHA BUSCADA ESTÁ CADASTRADA:
+
+```http
+  GET /restaurantes/cozinhas
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `cozinhaId`      | `Long` | **É Obrigatório** informar o ID da cozinha que você quer buscar |
+
+#### Serviço: cozinhasRestaurante(Long cozinhaId).
+
+Retorna a quantidade de restaurantes que a cozinha buscada está cadastrada. 
+
+
+## 
+
+#### RETORNA O PRIMEIRO RESTAUTANTE:
+
+```http
+  GET /restaurantes/primeiro
+```
+
+| `sem parâmetro` |
+
+
+#### Serviço: primeiroRestaurante().
+
+Retorna o primeiro restaurante cadastrado.
+
+
+## 
+
+#### RETORNA DOIS RESTAURANTES EXISTENTES:
+
+```http
+  GET /restaurantes/dois-primeiros-custom
+```
+
+| `sem parâmetro` |
+
+#### Serviço: doisPrimeirosRestaurantesCustom().
+
+Retorna os dois primeiros restaurantes cadastrados.
