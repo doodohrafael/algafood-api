@@ -5,7 +5,7 @@ API de Delivery de Comida criada para disponibilizar serviços de restaurantes.
 
 ## Stack utilizada
 
-**Front-end:** JSF e PrimeFaces.
+**Front-end:** XML e Json.
 
 **Back-end:** Java, SpringBoot, SpringMVC, SpringFramework, Spring Data JPA, MySql com JPA e Hibernate.
 
