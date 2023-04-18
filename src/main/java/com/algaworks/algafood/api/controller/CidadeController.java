@@ -38,6 +38,11 @@ public class CidadeController {
 
 	@Autowired
 	private CadastroCidadeService cadastroCidade;
+	
+	@GetMapping("/{cidadeId}")
+	public Cidade buscar(@PathVariable Long cidadeId) {
+		return cadastroCidade.buscarOuFalhar(cidadeId);
+	}
 
 	@GetMapping
 	public List<Cidade> listar() {
@@ -54,11 +59,6 @@ public class CidadeController {
 		}
 	}
 
-	@GetMapping("/{cidadeId}")
-	public Cidade buscar(@PathVariable Long cidadeId) {
-		return cadastroCidade.buscarOuFalhar(cidadeId);
-	}
-
 	@PutMapping("/{cidadeId}")
 	public Cidade atualizar(@PathVariable Long cidadeId, @RequestBody @Valid Cidade cidade) {
 		try {
@@ -69,12 +69,6 @@ public class CidadeController {
 		} catch (EstadoNaoEncontradoException e) {
 			throw new NegocioException(e.getMessage());
 		}
-	}
-
-	@DeleteMapping("/{cidadeId}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void excluir(@PathVariable Long cidadeId) {
-		cadastroCidade.excluir(cidadeId);
 	}
 
 	@PatchMapping("/{cidadeId}")
@@ -98,9 +92,20 @@ public class CidadeController {
 		});
 	}
 	
+	@DeleteMapping("/{cidadeId}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void excluir(@PathVariable Long cidadeId) {
+		cadastroCidade.excluir(cidadeId);
+	}
+	
 	@GetMapping("/por-nome")
 	public List<Cidade> cidadePorNome(String nome) {
 		return cidadeRepository.cidadePorNome(nome);
+	}
+	
+	@GetMapping("/primeira")
+	public Optional<Cidade> primeiraCidade() {
+		return cidadeRepository.findFirst();
 	}
 	
 	@GetMapping("/por-nome-e-estado")
@@ -111,11 +116,6 @@ public class CidadeController {
 	@GetMapping("/duas-primeiras")
 	public List<Cidade> duasPrimeirasCidades() {
 		return cidadeRepository.findTwo();
-	}
-	
-	@GetMapping("/primeira")
-	public Optional<Cidade> primeiraCidade() {
-		return cidadeRepository.findFirst();
 	}
 	
 	@GetMapping("/estados")

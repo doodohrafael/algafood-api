@@ -37,14 +37,14 @@ public class EstadoController {
 	@Autowired
 	private CadastroEstadoService cadastroEstado;
 
-	@GetMapping
-	public List<Estado> listar() {
-		return estadoRepository.findAll();
-	}
-	
 	@GetMapping("/{estadoId}")
 	public Estado buscar(@PathVariable Long estadoId) {
 		return cadastroEstado.buscarOuFalhar(estadoId);
+	}
+	
+	@GetMapping
+	public List<Estado> listar() {
+		return estadoRepository.findAll();
 	}
 	
 	@PostMapping
@@ -58,12 +58,6 @@ public class EstadoController {
 		Estado estadoAtual = cadastroEstado.buscarOuFalhar(estadoId);
 		BeanUtils.copyProperties(estado, estadoAtual, "id");
 		return estadoRepository.save(estadoAtual);
-	}
-	
-	@DeleteMapping("/{estadoId}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void excluir(@PathVariable Long estadoId) {
-		cadastroEstado.excluir(estadoId);
 	}
 	
 	@PatchMapping("/{estadoId}")
@@ -85,6 +79,12 @@ public class EstadoController {
 			ReflectionUtils.setField(field, estadoDestino, novoValor);
 			
 		});
+	}
+	
+	@DeleteMapping("/{estadoId}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void excluir(@PathVariable Long estadoId) {
+		cadastroEstado.excluir(estadoId);
 	}
 	
 	@GetMapping("/quantidade")

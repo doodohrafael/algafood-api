@@ -609,7 +609,7 @@ Recebe o nome do restaurante e retorna um ou mais restaurantes de acordo com o n
 
 #### Serviço: primeiroRestaurante(String nome).
 
-Recebe o nome da restaurante e retorna o primeiro restaurante específico de acordo com o nome informado.
+Recebe o nome do restaurante e retorna o primeiro restaurante específico de acordo com o nome informado.
 
 
 ## 
@@ -626,7 +626,7 @@ Recebe o nome da restaurante e retorna o primeiro restaurante específico de aco
 
 #### Serviço: cozinhasRestaurante(Long cozinhaId).
 
-Retorna a quantidade de restaurantes que a cozinha buscada está cadastrada. 
+Retorna a quantidade de restaurantes em que a cozinha buscada está cadastrada. 
 
 
 ## 
@@ -658,3 +658,344 @@ Retorna o primeiro restaurante cadastrado.
 #### Serviço: doisPrimeirosRestaurantesCustom().
 
 Retorna os dois primeiros restaurantes cadastrados.
+
+# | --------------------------------------------------- |
+
+### Serviços de Estado
+
+#### RETORNA UM ESTADO EXISTENTE POR ID:
+
+```http
+  GET /estados/{estadoId}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `estadoId`      | `Long` | **É Obrigatório** informar o ID do estado que você quer buscar |
+
+#### Serviço: buscar(Long estadoId).
+
+Recebe o id do estado e retorna um estado específico de acordo com o ID.
+
+
+## 
+
+#### RETORNA TODOS OS ESTADO:
+
+```http
+  GET /estados
+```
+
+| `sem parâmetro` |
+
+
+#### Serviço: listar().
+
+Retorna todos os estados.
+
+
+## 
+
+#### ADICIONA UM NOVO ESTADO:
+
+```http
+  POST /estados
+```
+
+| Parâmetro   | Tipo  | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `Estado`  | `Json` | **É Obrigatório** informar o arquivo Json. |
+
+#### Serviço: adicionar(Estado estado).
+
+Adiciona um novo estado e retorna o estado adicionado.
+
+
+## 
+
+#### ATUALIZA UM ESTADO EXISTENTE:
+
+```http
+  PUT /estados/{estadoId}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `estadoId`      | `Long` | **É Obrigatório** informar o ID do estado que você quer atualizar |
+| `Estado`  | `Json` | **É Obrigatório** informar o arquivo Json.  |
+
+#### Serviço: atualizar(Long estadoId, Estado estado).
+
+Recebe o id do estado e o estado em json, atualiza o estado existente e retorna o estado que foi atualizado.
+
+
+## 
+
+#### ATUALIZA UM ESTADO EXISTENTE PARCIALMENTE:
+
+```http
+  PATCH /estados/{estadoId}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `estadoId`      | `Long` | **É Obrigatório** informar o ID do estado que você quer atualizar |
+| `Estado`  | `Json` | **É Obrigatório** informar o arquivo Json. |
+
+#### Serviço: atualizarParcial(Long estadoId, Estado estado).
+
+Recebe o id do estado e o estado em json, atualiza o estado existente e retorna o estado que foi atualizado.
+
+
+## 
+
+#### REMOVE UM ESTADO EXISTENTE :
+
+```http
+  DELETE /estados/{estadoId}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `estadoId`      | `Long` | **É Obrigatório** informar o ID do estado que você quer deletar |
+
+#### Serviço: excluir(Long estadoId).
+
+Recebe o id do estado, deleta o estado existente e retorna um "no content - 204".
+
+
+## 
+
+#### RETORNA A QUANTIDADE DE ESTADOS EXISTENTES:
+
+```http
+  GET /estados/quantidade
+```
+
+| `sem parâmetro` |
+
+#### Serviço: quantidade().
+
+Retorna a quantidade de estados existentes.
+
+## 
+
+#### RETORNA UM ESTADO EXISTENTE POR NOME:
+
+```http
+  GET /estados/por-nome
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `nome`      | `String` | **É Obrigatório** informar o nome do estado que você quer buscar |
+
+#### Serviço: nomesIguais(String nome).
+
+Recebe o nome do estado e retorna um ou vários estados de acordo com o nome.
+
+
+## 
+
+#### RETORNA O PRIMEIRO ESTADO ENCONTRADO POR NOME:
+
+```http
+  GET /estados/primeiro
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `nome`      | `String` | **É Obrigatório** informar nome do estado que você quer buscar |
+
+#### Serviço: primeiroEstado(String nome).
+
+Recebe o nome do estado e retorna o primeiro estado específico de acordo com o nome informado.
+
+
+## 
+
+#### RETORNA UM ESTADO EXISTENTE POR NOME:
+
+```http
+  GET /estados/por-nome-comecando-por
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `nome`      | `String` | **É Obrigatório** informar nome do estado que você quer buscar |
+
+#### Serviço: estadoPorNomeComecandoPor(String nome).
+
+Recebe o nome do estado e retorna o primeiro estado específico de acordo com o nome informado.
+
+# | --------------------------------------------------- |
+
+### Serviços de Cidade
+
+#### RETORNA UM CIDADE EXISTENTE POR ID:
+
+```http
+  GET /cidades/{cidadeId}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `cidadeId`      | `Long` | **É Obrigatório** informar o ID da cidade que você quer buscar |
+
+#### Serviço: buscar(Long cidadeId).
+
+Recebe o id da cidade e retorna uma cidade específica de acordo com o ID.
+
+
+## 
+
+#### RETORNA TODAS AS CIDADES:
+
+```http
+  GET /cidades
+```
+
+| `sem parâmetro` |
+
+
+#### Serviço: listar().
+
+Retorna todas as cidades.
+
+
+## 
+
+#### ADICIONA UMA NOVA CIDADE:
+
+```http
+  POST /cidades
+```
+
+| Parâmetro   | Tipo  | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `Cidade`  | `Json` | **É Obrigatório** informar o arquivo Json. |
+
+#### Serviço: adicionar(Cidade cidade).
+
+Adiciona uma nova cidade e retorna a cidade adicionada.
+
+
+## 
+
+#### ATUALIZA UMA CIDADE EXISTENTE:
+
+```http
+  PUT /cidades/{cidadeId}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `cidadeId`      | `Long` | **É Obrigatório** informar o ID da cidade que você quer atualizar |
+| `Cidade`  | `Json` | **É Obrigatório** informar o arquivo Json.  |
+
+#### Serviço: atualizar(Long cidadeId, Cidade cidade).
+
+Recebe o id da cidade e a cidade em json, atualiza a cidade existente e retorna a cidade que foi atualizada.
+
+
+## 
+
+#### ATUALIZA UMA CIDADE EXISTENTE PARCIALMENTE:
+
+```http
+  PATCH /cidades/{cidadeId}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `cidadeId`      | `Long` | **É Obrigatório** informar o ID da cidade que você quer atualizar |
+| `Cidade`  | `Json` | **É Obrigatório** informar o arquivo Json. |
+
+#### Serviço: atualizarParcial(Long estadoId, Estado estado).
+
+Recebe o id da cidade e a cidade em json, atualiza a cidade existente e retorna a cidade que foi atualizada.
+
+
+## 
+
+#### REMOVE UMA CIDADE EXISTENTE :
+
+```http
+  DELETE /cidades/{cidadeId}
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `cidadeId`      | `Long` | **É Obrigatório** informar o ID da cidade que você quer deletar |
+
+#### Serviço: excluir(Long cidadeId).
+
+Recebe o id da cidade, deleta a cidade existente e retorna um "no content - 204".
+
+
+## 
+
+#### RETORNA UMA CIDADE EXISTENTE POR NOME:
+
+```http
+  GET /cidades/por-nome
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `nome`      | `String` | **É Obrigatório** informar o nome da cidade que você quer buscar |
+
+#### Serviço: cidadePorNome(String nome).
+
+Recebe o nome da cidade e retorna uma ou várias cidades de acordo com o nome.
+
+
+## 
+
+#### RETORNA A PRIMEIRA CIDADE ENCONTRADA POR NOME:
+
+```http
+  GET /cidades/primeira
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `nome`      | `String` | **É Obrigatório** informar nome da cidade que você quer buscar |
+
+#### Serviço: primeiraCidade(String nome).
+
+Recebe o nome da cidade e retorna a primeira cidade específica de acordo com o nome informado.
+## 
+
+#### RETORNA UMA OU VÁRIAS COZINHAS POR NOME DA CIDADE E ID DO ESTADO:
+
+```http
+  GET /cidades/por-nome-e-estado
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `nome`      | `String` | **É Obrigatório** informar o nome da cidade que você quer buscar |
+| `estadoId`      | `Long` | **É Obrigatório** informar o ID do estado do estado que você quer buscar |
+
+#### Serviço: cidadePorNomeEEstado(String nome, Long estadoId).
+
+Recebe o nome da cidade e o id do estado e retorna uma cidade específica de acordo com o nome e o ID.
+
+
+## 
+
+#### RETORNA A QUANTIDADE DE CIDADES EXISTENTES EM QUE O ESTADO BUSCADO ESTÁ CADASTRADO:
+
+
+```http
+  GET /cidades/estados
+```
+
+| Parâmetro   | Tipo       | Descrição                                   |
+| :---------- | :--------- | :------------------------------------------ |
+| `estadoId`      | `Long` | **É Obrigatório** informar o ID do estado que você quer buscar |
+
+#### Serviço: cidadePorEstado(Long estadoId).
+
+Retorna a quantidade de cidades em que o estado buscado está cadastrado.

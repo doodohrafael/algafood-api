@@ -53,7 +53,6 @@ public class CozinhaController {
 	public Cozinha adicionar(@RequestBody @Valid Cozinha cozinha) {
 		return cadastroCozinha.salvar(cozinha);
 	}
-
 	
 	@PutMapping("/{cozinhaId}")
 	public Cozinha atualizar(@PathVariable Long cozinhaId, @RequestBody @Valid Cozinha cozinha) {
@@ -61,7 +60,6 @@ public class CozinhaController {
 		BeanUtils.copyProperties(cozinha, cozinhaAtual, "id");
 		return cadastroCozinha.salvar(cozinhaAtual);
 	}
-
 
 	@DeleteMapping("/{cozinhaId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
@@ -95,27 +93,27 @@ public class CozinhaController {
 		return cozinhaRepository.findByNomeContaining(nome);
 	}
 	
-	@GetMapping("por-nome-customizada")
+	@GetMapping("/por-nome-customizada")
 	public List<Cozinha> cozinhaPorNomeCustomizada(String nome) {
 		return cozinhaRepository.consultarCozinhaPorNome(nome);
 	}
 	
-	@GetMapping("por-nome-orm")
+	@GetMapping("/por-nome-orm")
 	public List<Cozinha> cozinhaPorNomeOrm(String nome) {
 		return cozinhaRepository.consultarCozinhaPorNomeOrm(nome);
 	}
 	
-	@GetMapping("por-nome-jpql")
+	@GetMapping("/por-nome-jpql")
 	public List<Cozinha> cozinhaPorNomeJpql(String nome) {
 		return cozinhaRepository.find(nome);
 	}
 	
-	@GetMapping("por-nome-dinamico")
+	@GetMapping("/por-nome-dinamico")
 	public List<Cozinha> cozinhaPorNomeDinamico(String nome) {
 		return cozinhaRepository.findDinamico(nome);
 	}
 	
-	@GetMapping("por-nome-dois-primeiros")
+	@GetMapping("/por-nome-dois-primeiros")
 	public List<Cozinha> cozinhaPorNomeDoisPrimeiros(String nome) {
 		return cozinhaRepository.findTop2ByNomeContaining(nome);
 	}
@@ -125,7 +123,7 @@ public class CozinhaController {
 		return cozinhaRepository.findFirstByNomeContaining(nome);
 	}
 	
-	@GetMapping("por-nome-criteria")
+	@GetMapping("/por-nome-criteria")
 	public List<Cozinha> cozinhaPorNomeCriteria(String nome) {
 		return cozinhaRepository.findCriteria(nome);
 	}
