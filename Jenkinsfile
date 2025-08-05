@@ -11,15 +11,6 @@ pipeline {
     }
     
     stages {
-        stage('Prepare') {
-            steps {
-                // Concede permissão para o mvnw (Linux/Unix)
-                sh 'chmod +x mvnw'
-
-                // Opcional: Verifique as permissões (debug)
-                sh 'ls -la mvnw'
-            }
-        }
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/doodohrafael/algafood-api.git'
@@ -28,6 +19,7 @@ pipeline {
         
         stage('Build') {
             steps {
+                sh 'chmod +x ./mvnw'
                 sh './mvnw clean package'
             }
         }
