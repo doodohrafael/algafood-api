@@ -25,7 +25,7 @@ pipeline {
         
         stage('Test') {
             steps {
-                sh './mvnw surefire:test'
+                sh './mvnw test'
             }
             
             post {
