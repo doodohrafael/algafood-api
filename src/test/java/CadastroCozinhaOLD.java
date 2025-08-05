@@ -1,5 +1,3 @@
-package com.algaworks.algafood;
-
 import static com.algaworks.algafood.util.ResourceUtils.getContentFromResource;
 import static io.restassured.RestAssured.enableLoggingOfRequestAndResponseIfValidationFails;
 import static io.restassured.RestAssured.given;
@@ -25,7 +23,7 @@ import io.restassured.http.ContentType;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestPropertySource("/application-test.properties")
-public class CadastroCozinhaIT {
+public class CadastroCozinhaOLD {
 	
 
 	@LocalServerPort

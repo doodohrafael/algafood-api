@@ -1,5 +1,3 @@
-package com.algaworks.algafood;
-
 import static com.algaworks.algafood.util.ResourceUtils.getContentFromResource;
 import static io.restassured.RestAssured.enableLoggingOfRequestAndResponseIfValidationFails;
 import static io.restassured.RestAssured.given;
@@ -27,7 +25,7 @@ import io.restassured.http.ContentType;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestPropertySource(locations = "/application-test.properties")
-public class CadastroRestauranteIT {
+public class CadastroRestaurantOLD {
 	
 	private static final String VIOLACAO_DE_REGRA_DE_NEGOCIO_PROBLEM_TYPE = "Violação de regra de negócio";
 

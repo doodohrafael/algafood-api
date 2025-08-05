@@ -20,6 +20,8 @@
     <properties>
         <java.version>17</java.version>
         <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
+        <junit-jupiter.version>5.8.2</junit-jupiter.version>
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
     </properties>
 
     <dependencies>
@@ -58,6 +60,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
             <scope>provided</scope>
         </dependency>
 
@@ -106,9 +109,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <artifactId>maven-failsafe-plugin</artifactId>
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -122,9 +122,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.1.2</version>
                 <configuration>
                     <includes>
+                        <include>**/*IT.java</include>
                         <include>**/*Test.java</include>
                     </includes>
                 </configuration>
