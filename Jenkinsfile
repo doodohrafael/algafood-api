@@ -4,7 +4,7 @@ pipeline {
     tools {
         jdk 'jdk-17'
         maven 'maven'
-        sonarscanner 'sonarqube-scanner'
+        sonarRunner 'sonarqube-scanner'
     }
     
     environment {
