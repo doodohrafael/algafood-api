@@ -41,7 +41,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonarqube-scanner') { // 'SonarQube' deve bater com o nome configurado no Jenkins
+                withSonarQubeEnv('SonarQube') { // 'SonarQube' deve bater com o nome configurado no Jenkins
                     sh '''
                     ./mvnw sonar:sonar \
                       -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
