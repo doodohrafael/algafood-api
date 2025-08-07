@@ -4,7 +4,6 @@ pipeline {
     tools {
         jdk 'jdk-17'
         maven 'maven'
-        hudson.plugins.sonar.SonarRunnerInstallation 'sonarqube-scanner'
     }
     
     environment {
@@ -40,18 +39,12 @@ pipeline {
         }
 
         stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube') { // 'SonarQube' deve bater com o nome configurado no Jenkins
-                    sh '''
-                    ./mvnw sonar:sonar \
-                      -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-                      -Dsonar.projectName="${SONAR_PROJECT_NAME}" \
-                      -Dsonar.java.binaries=target/classes \
-                      -Dsonar.junit.reportPaths=target/surefire-reports
-                    '''
+                steps {
+                    withSonarQubeEnv('SonarQube') {
+                        sh './mvnw sonar:sonar -Dsonar.host.url=http://sonarqube:9000'
+                    }
                 }
             }
-        }
 
         stage('Quality Gate') {
             steps {
