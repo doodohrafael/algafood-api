@@ -4,10 +4,13 @@ pipeline {
     tools {
         jdk 'jdk-17'
         maven 'maven'
+        sonarscanner 'SonarScanner'
     }
     
     environment {
         APP_NAME = "sua-api-spring-boot"
+        SONAR_PROJECT_KEY = "algafood-api"
+        SONAR_PROJECT_NAME = "AlgaFood API"
     }
     
     stages {
@@ -32,6 +35,28 @@ pipeline {
             post {
                 always {
                     junit 'target/surefire-reports/**/*.xml'
+                }
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonarqube-scanner') { // 'SonarQube' deve bater com o nome configurado no Jenkins
+                    sh '''
+                    ./mvnw sonar:sonar \
+                      -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
+                      -Dsonar.projectName="${SONAR_PROJECT_NAME}" \
+                      -Dsonar.java.binaries=target/classes \
+                      -Dsonar.junit.reportPaths=target/surefire-reports
+                    '''
+                }
+            }
+        }
+
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 5, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true // Falha o pipeline se a qualidade não passar
                 }
             }
         }
