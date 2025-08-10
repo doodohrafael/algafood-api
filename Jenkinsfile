@@ -54,33 +54,16 @@ pipeline {
 //             }
 //         }
 
-// stage('Quality Gate') {
-//     steps {
-//         script {
-//             try {
-//                 timeout(time: 5, unit: 'MINUTES') {
-//                     def qg = waitForQualityGate abortPipeline: true
-//                     echo "Quality Gate Status: ${qg.status}"
-//                 }
-//             } catch (err) {
-//                 error "Quality Gate falhou: ${err}"
-//             }
-//         }
-//     }
-// }
-
 stage('Quality Gate') {
     steps {
         script {
             try {
-                def qg = waitForQualityGate abortPipeline: true
-                echo "✅ Quality Gate APROVADO: Status=${qg.status}"
-            } catch (err) {
-                echo "❌ Quality Gate REPROVADO: ${err.getMessage()}"
-                // Opcional: Falha o pipeline apenas se for crítico
-                if (err.toString().contains('Blocker')) {
-                    error "Erro crítico no Quality Gate!"
+                timeout(time: 5, unit: 'MINUTES') {
+                    def qg = waitForQualityGate abortPipeline: false
+                    echo "Quality Gate Status: ${qg.status}"
                 }
+            } catch (err) {
+                error "Quality Gate falhou: ${err}"
             }
         }
     }
