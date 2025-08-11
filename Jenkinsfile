@@ -59,7 +59,7 @@ stage('Quality Gate') {
         script {
             try {
                 timeout(time: 5, unit: 'MINUTES') {
-                    def qg = waitForQualityGate abortPipeline: false
+                    def qg = waitForQualityGate abortPipeline: true
                     echo "Quality Gate Status: ${qg.status}"
                 }
             } catch (err) {
