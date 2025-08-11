@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,15 +30,13 @@ import com.algaworks.algafood.domain.repository.CidadeRepository;
 import com.algaworks.algafood.domain.service.CadastroCidadeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/cidades")
 public class CidadeController {
 
-	@Autowired
-	private CidadeRepository cidadeRepository;
-
-	@Autowired
-	private CadastroCidadeService cadastroCidade;
+	private final CidadeRepository cidadeRepository;
+	private final CadastroCidadeService cadastroCidade;
 	
 	@GetMapping("/{cidadeId}")
 	public Cidade buscar(@PathVariable Long cidadeId) {
