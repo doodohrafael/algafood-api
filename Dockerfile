@@ -16,7 +16,7 @@ RUN chmod +x /wait-for-it.sh
 ENV JAVA_TMPDIR=/tmp/algafood
 ENV CATALINA_TMPDIR=/tmp/algafood/tomcat
 
-EXPOSE 8080
+EXPOSE 8180
 
 #CMD ["java", "-jar", "algafood-api.jar"]
 CMD ["java", "-Djava.io.tmpdir=/tmp/algafood", "-Dserver.tomcat.basedir=/tmp/algafood/tomcat", "-jar", "algafood-api.jar"]
